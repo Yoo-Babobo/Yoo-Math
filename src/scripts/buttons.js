@@ -29,6 +29,16 @@ $("#__number-9").on("click", () => {
     type(9);
 })
 
+$("#__symbol-left-parenthesis").on("click", () => {
+    type("(");
+})
+$("#__symbol-right-parenthesis").on("click", () => {
+    type(")");
+})
+$("#__symbol-period").on("click", () => {
+    type(".");
+})
+
 $("#__operation-add").on("click", () => {
     type_symbol("+");
 })
@@ -45,14 +55,21 @@ $("#__operation-percent").on("click", () => {
     type_symbol("%");
 })
 
-$("#__symbol-left-parenthesis").on("click", () => {
-    type("(");
+$("#__constant-pi").on("click", () => {
+    type("π");
 })
-$("#__symbol-right-parenthesis").on("click", () => {
-    type(")");
+$("#__constant-e").on("click", () => {
+    type("e");
 })
-$("#__symbol-period").on("click", () => {
-    type(".");
+
+$("#__function-square").on("click", () => {
+    power();
+})
+$("#__function-square-root").on("click", () => {
+    square_root();
+})
+$("#__function-one-divided-by").on("click", () => {
+    run("1÷(" + $("#box").html() + ")");
 })
 
 $("#__equals").on("click", () => {

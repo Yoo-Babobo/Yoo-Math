@@ -7,6 +7,7 @@
     margin: 0;
     border: 0;
     padding: 0;
+    transition: all .3s;
     user-select: none;
 }
 
@@ -45,6 +46,10 @@ body {
     color: #d3d3d3;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    padding: 10px;
+}
+
 table {
     margin: auto;
 }
@@ -57,7 +62,11 @@ input:focus {
     outline: 0px;
 }
 
-#menu-bar {
+button, a {
+    cursor: pointer;
+}
+
+#top-bar {
     position: fixed;
     top: 0;
     left: 0;
@@ -71,42 +80,48 @@ input:focus {
     -webkit-app-region: drag;
 }
 
-#menu-bar > div {
+#top-bar > div {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#menu-bar p {
+#top-bar p {
     padding: 5px;
     font-size: 10px;
     letter-spacing: 3px;
-}
-
-#menu-bar img {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-}
-
-#minimize-btn:hover {
-    background-color: #303030;
 }
 
 #close-btn:hover {
     background-color: firebrick;
 }
 
+#menu-bar {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    z-index: 999999;
+    width: 30px;
+    background: #272727;
+    -webkit-app-region: drag;
+}
+
+#pin-btn.pinned {
+    background-color: #42ff4b;
+}
+
 #box {
     background-color: #d3d3d3;
     color: #343434;
+    font-size: 20px;
     margin: auto;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     width: 66%;
-    height: 20px;
+    height: 25px;
     overflow-x: auto;
     overflow-y: hidden;
     user-select: text;
@@ -114,6 +129,21 @@ input:focus {
 
 #box.selected {
     background-color: #a3b2e0;
+}
+
+#last-calculation {
+    background-color: #d3d3d394;
+    color: #343434;
+    font-size: 15px;
+    margin: auto;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 66%;
+    height: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    user-select: text;
 }
 
 #version {
@@ -126,14 +156,75 @@ input:focus {
     z-index: 1;
 }
 
-.menubar-btn {
-    background-color: #343434;
+#notification {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    background-color: #222222;
+    color: #d3d3d3;
+    bottom: 0;
+    right: 0;
+    width: 33%;
+    margin: 7.5px;
+    padding: 20px;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: opacity .5s;
+}
+
+#notification-title {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#notification p {
+    padding: 10px;
+}
+
+#notification-button1 {
+    display: none;
+    opacity: 0;
+    background-color: #6934d3;
+    color: #d3d3d3;
+    padding: 10px;
+    border-radius: 10vh;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#notification-button2 {
+    display: none;
+    opacity: 0;
+    background-color: #6934d3;
+    color: #d3d3d3;
+    padding: 10px;
+    border-radius: 10vh;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.topbar-btn {
+    background-color: #272727;
     color: #d3d3d3;
     width: 30px;
     height: 30px;
-    cursor: pointer;
-    transition: all .3s;
     -webkit-app-region: no-drag;
+}
+
+.topbar-btn:hover {
+    background-color: #343434;
+}
+
+.menubar-btn {
+    background-color: #272727;
+    color: #d3d3d3;
+    display: block;
+    width: 30px;
+    height: 30px;
+    -webkit-app-region: no-drag;
+}
+
+.menubar-btn:hover {
+    background-color: #343434;
 }
 
 .container {
@@ -150,7 +241,12 @@ input:focus {
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn:hover {
+    box-shadow: none;
+    transform: scale(.95);
 }
 
 .cal-btn-symbol {
@@ -162,7 +258,12 @@ input:focus {
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-symbol:hover {
+    box-shadow: none;
+    transform: scale(.95);
 }
 
 .cal-btn-operation {
@@ -174,7 +275,46 @@ input:focus {
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-operation:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-constant {
+    background-color: #f28500;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-constant:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-function {
+    background-color: #9867c5;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-function:hover {
+    box-shadow: none;
+    transform: scale(.95);
 }
 
 .cal-btn-equals {
@@ -186,7 +326,12 @@ input:focus {
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-equals:hover {
+    box-shadow: none;
+    transform: scale(.95);
 }
 
 .cal-btn-clear {
@@ -198,5 +343,10 @@ input:focus {
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-clear:hover {
+    box-shadow: none;
+    transform: scale(.95);
 }

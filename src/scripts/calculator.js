@@ -1,6 +1,16 @@
 var calculated = true;
 var selected = false;
 
+setInterval(() => {
+    if ($("#box").html() === null || $("#box").html() === "") {
+        type(0);
+    }
+
+    if ($("#box").html() == "0") {
+        calculated = true;
+    }
+}, 20);
+
 $(document).on("focus", unselect);
 $(document).on("click", unselect);
 $(document).on("dblclick", unselect);
@@ -21,15 +31,46 @@ function type_symbol(a) {
     calculated = false;
 }
 
-function run() {
-    $("#box").html(eval($("#box").html()
+function run(raw_math = $("#box").html()) {
+    var math = raw_math
         .replace(/×/g, "*")
         .replace(/÷/g, "/")
         .replace(/%/g, "/100")
         .replace(/π/g, Math.PI)
-        .replace(/e/g, Math.E)));
+        .replace(/e/g, Math.E);
+    var output = eval(math).toString().replace(/Infinity/g, "∞");
+
+    $("#box").html(output);
+    set_last_calculation(raw_math + "=" + output);
     calculated = true;
-    $("#__clear").text("C");
+}
+
+function power(math = $("#box").html(), power = 2) {
+    math = math
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/%/g, "/100")
+        .replace(/π/g, Math.PI)
+        .replace(/e/g, Math.E);
+    var output = Math.pow(eval(math), power).toString().replace(/Infinity/g, "∞");
+
+    $("#box").html(output);
+    set_last_calculation("(" + math + ")<sup>" + power + "</sup>=" + output);
+    calculated = true;
+}
+
+function square_root(math = $("#box").html()) {
+    math = math
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/%/g, "/100")
+        .replace(/π/g, Math.PI)
+        .replace(/e/g, Math.E);
+    var output = Math.sqrt(eval(math)).toString().replace(/Infinity/g, "∞");
+
+    $("#box").html(output);
+    set_last_calculation("√(" + math + ")=" + output);
+    calculated = true;
 }
 
 function clear(del = false) {
@@ -37,7 +78,6 @@ function clear(del = false) {
         $("#box").html("");
         unselect();
         calculated = false;
-        $("#__clear").text("CE");
         return;
     }
 
@@ -52,7 +92,6 @@ function clear(del = false) {
     }
 
     calculated = false;
-    $("#__clear").text("CE");
 }
 
 function clear_if_calculated() {
@@ -69,18 +108,15 @@ function clear_if_calculated() {
 
 function select() {
     selected = true;
-    $("#__clear").text("C");
     $("#box").addClass("selected");
 }
 
 function unselect() {
     selected = false;
-    $("#__clear").text("CE");
     $("#box").removeClass("selected");
 }
 
-ipcRenderer.send("app-version");
-ipcRenderer.on("app-version", (event, data) => {
-    ipcRenderer.removeAllListeners("app-version");
-    $("#version").text(data.version)
-});
+function set_last_calculation(math) {
+    $("#last-calculation").html(math);
+    $("#last-calculation").scrollLeft(999999999);
+}

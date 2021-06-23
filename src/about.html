@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+      const { ipcRenderer } = require('electron');
+      let $ = require("jquery");
+      let jQuery = $;
+    </script>
+    <title>About Yoo-Math</title>
+  </head>
+  <body>
+    <div id="top-bar">
+      <div>
+        <button class="topbar-btn" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/logo-small.png" alt="Yoo-Math" /></button>
+      </div>
+      <div>
+        <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
+        <button class="topbar-btn" id="close-btn" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="container">
+      <div id="menu-bar">
+        <button class="menubar-btn" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="Info" /></button>
+        <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen">📍</button>
+      </div>
+      <h1>About</h1>
+      <p>
+          Bla bla bla
+      </p>
+      <div id="notification">
+        <p id="notification-title"></p>
+        <p id="notification-message"></p>
+        <button id="notification-button1">Dismiss</button>
+        <button id="notification-button2"></button>
+      </div>
+      <p id="version">—</p>
+    </div>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/menu.js"></script>
+  </body>
+</html>
