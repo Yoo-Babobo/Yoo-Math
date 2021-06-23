@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+      const { ipcRenderer } = require('electron');
+      let $ = require("jquery");
+      let jQuery = $;
+    </script>
+    <title>Yoo-Math</title>
+  </head>
+  <body>
+    <div id="menu-bar">
+      <div class="left">
+        <img src="assets/img/logo-small.png" alt="Yoo-Math" />
+      </div>
+      <div class="right">
+        <button class="menubar-btn" id="minimize-btn" title="Minimize">—</button>
+        <button class="menubar-btn" id="close-btn" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="container">
+      <div id="box"></div>
+      <br><br>
+      <table>
+        <tbody>
+          <tr>
+            <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" title="Left parenthesis">(</button></td>
+            <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" title="Right parenthesis">)</button></td>
+            <td><button class="cal-btn-clear" id="__clear" title="Clear">C</button></td>
+            <td><button class="cal-btn-equals" id="__equals" title="Equals (Calculate)">=</button></td>
+          </tr>
+          <tr>
+            <td><button class="cal-btn" id="__number-7" title="7" title="Seven">7</button></td>
+            <td><button class="cal-btn" id="__number-8" title="8" title="Eight">8</button></td>
+            <td><button class="cal-btn" id="__number-9" title="9" title="Nine">9</button></td>
+            <td><button class="cal-btn-operation" id="__operation-add" title="Add">+</button></td>
+          </tr>
+          <tr>
+            <td><button class="cal-btn" id="__number-4" title="Four">4</button></td>
+            <td><button class="cal-btn" id="__number-5" title="Five">5</button></td>
+            <td><button class="cal-btn" id="__number-6" title="Six">6</button></td>
+            <td><button class="cal-btn-operation" id="__operation-subtract" title="Subtract">-</button></td>
+          </tr>
+          <tr>
+            <td><button class="cal-btn" id="__number-1" title="One">1</button></td>
+            <td><button class="cal-btn" id="__number-2" title="Two">2</button></td>
+            <td><button class="cal-btn" id="__number-3" title="Three">3</button></td>
+            <td><button class="cal-btn-operation" id="__operation-multiply" title="Multiply">×</button></td>
+          </tr>
+          <tr>
+            <td><button class="cal-btn-symbol" id="__symbol-period" title="Period">.</button></td>
+            <td><button class="cal-btn" id="__number-0" title="Zero">0</button></td>
+            <td><button class="cal-btn-operation" id="__operation-percent" title="Percent">%</button></td>
+            <td><button class="cal-btn-operation" id="__operation-divide" title="Divide">÷</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="version">—</p>
+    </div>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/calculator.js"></script>
+    <script src="scripts/buttons.js"></script>
+    <script src="scripts/shortcuts.js"></script>
+  </body>
+</html>

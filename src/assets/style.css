@@ -1,0 +1,202 @@
+@import url("fonts/Roboto.css");
+
+* {
+    font-family: "Roboto";
+    font-weight: 200;
+    text-align: center;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 2.5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2f3129;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffde59;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 2.5px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: #2f3129;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: #ffde59;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-corner {
+    background: #2f3129;
+}
+
+body {
+    background-color: #2f3129;
+    color: #d3d3d3;
+}
+
+table {
+    margin: auto;
+}
+
+tbody {
+    padding: 20px;
+}
+
+input:focus {
+    outline: 0px;
+}
+
+#menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 999999;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    background: #272727;
+    -webkit-app-region: drag;
+}
+
+#menu-bar > div {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu-bar p {
+    padding: 5px;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+#menu-bar img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+#minimize-btn:hover {
+    background-color: #303030;
+}
+
+#close-btn:hover {
+    background-color: firebrick;
+}
+
+#box {
+    background-color: #d3d3d3;
+    color: #343434;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 66%;
+    height: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    user-select: text;
+}
+
+#box.selected {
+    background-color: #a3b2e0;
+}
+
+#version {
+    position: fixed;
+    text-align: right;
+    font-size: 10px;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    z-index: 1;
+}
+
+.menubar-btn {
+    background-color: #343434;
+    color: #d3d3d3;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all .3s;
+    -webkit-app-region: no-drag;
+}
+
+.container {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.cal-btn {
+    background-color: tomato;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.cal-btn-symbol {
+    background-color: #ffde59;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.cal-btn-operation {
+    background-color: palegreen;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.cal-btn-equals {
+    background-color: royalblue;
+    color: #d3d3d3;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.cal-btn-clear {
+    background-color: aqua;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
