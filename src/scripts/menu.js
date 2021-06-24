@@ -23,3 +23,16 @@ $(() => {
     ipcRenderer.send("about-page");
   });
 });
+
+$(window).on("keydown", (e) => {
+  if (e.ctrlKey) {
+    switch (e.key) {
+      case "p":
+        ipcRenderer.send("pin-toggle");
+        break;
+      case "p":
+        ipcRenderer.send("pin-toggle");
+        break;
+    }
+  }
+});

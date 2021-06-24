@@ -109,7 +109,7 @@ button, a {
 }
 
 #pin-btn.pinned {
-    background-color: #42ff4b;
+    background-color: red;
 }
 
 #box {
@@ -214,6 +214,10 @@ button, a {
     background-color: #343434;
 }
 
+.topbar-btn.active {
+    background-color: red;
+}
+
 .menubar-btn {
     background-color: #272727;
     color: #d3d3d3;
@@ -225,6 +229,10 @@ button, a {
 
 .menubar-btn:hover {
     background-color: #343434;
+}
+
+.menubar-btn.active {
+    background-color: red;
 }
 
 .container {
