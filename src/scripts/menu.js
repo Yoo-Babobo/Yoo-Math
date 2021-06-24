@@ -1,7 +1,38 @@
+var n = false;
+
 $(() => {
   setInterval(() => {
     ipcRenderer.send("pinned");
   }, 20);
+
+  $(document).on("keydown", (e) => {
+    if (e.ctrlKey) {
+      switch (e.key) {
+        case "p":
+        case "p":
+          ipcRenderer.send("pin-toggle");
+          break;
+      }
+    } else if (e.altKey) {
+      if (n) {
+        hide_notification();
+        n = false;
+      } else {
+        notification("Test", "This is a test notification...", true, "Click me!", () => {
+          alert("You click a notification button!");
+        });
+  
+        n = true;
+      }
+    }
+  });
+
+  $(document).on("scroll", () => {
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (scroll / height) * 100;
+    $("#scroll-bar").css("width", scrolled + "%");
+  });
 
   $("#home-btn").on("click", () => {
     ipcRenderer.send("home-page");
@@ -22,17 +53,4 @@ $(() => {
   $("#about-btn").on("click", () => {
     ipcRenderer.send("about-page");
   });
-});
-
-$(window).on("keydown", (e) => {
-  if (e.ctrlKey) {
-    switch (e.key) {
-      case "p":
-        ipcRenderer.send("pin-toggle");
-        break;
-      case "p":
-        ipcRenderer.send("pin-toggle");
-        break;
-    }
-  }
 });

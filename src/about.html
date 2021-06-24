@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
     <script>
-      const { ipcRenderer } = require('electron');
       let $ = require("jquery");
       let jQuery = $;
     </script>
@@ -13,23 +12,45 @@
   </head>
   <body>
     <div id="top-bar">
-      <div>
-        <button class="topbar-btn" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/logo-small.png" alt="Yoo-Math" /></button>
-      </div>
+      <div></div>
       <div>
         <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
         <button class="topbar-btn" id="close-btn" title="Close">✕</button>
       </div>
     </div>
-    <div class="container">
-      <div id="menu-bar">
-        <button class="menubar-btn active" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="Info" /></button>
-        <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+    <div id="menu-bar">
+      <button class="menubar-btn" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/home-small.png" alt="Home" /></button>
+      <button class="menubar-btn active" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="About" /></button>
+      <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+    </div>
+    <div class="root">
+      <div id="scroll-container">
+        <div id="scroll-bar"></div>
       </div>
       <h1>About</h1>
       <p>
-          Bla bla bla
+        Yoo-Math is a simple math application with measurement converters and a beautiful design.
       </p>
+      <img src="assets/img/logo.png" style="width: 50%;" alt="The Yoo-Math Logo" />
+      <h2>What it's made of</h2>
+      <p>
+        Yoo-Math was made with JavaScript, HTML, and CSS. <a onclick="open_link('https://www.electronjs.org/')" title="Electron's website">Electron.js</a> was used to turn it into an app.
+      </p>
+      <h2>Features</h2>
+      <ul>
+        <li>Supports parentheses</li>
+        <li>Supports any power</li>
+        <li>Supports any root</li>
+        <li>Convert all popular measurements</li>
+        <li>Beautiful design and animations</li>
+        <li>Keyboard shortcuts for everything</li>
+        <li>Pin app to screen</li>
+        <li>Dark and light mode based on system preferences</li>
+        <li>Auto updating</li>
+      </ul>
+      <h2>Misc</h2>
+      <button class="btn" onclick="open_link('https://www.math.yoo-babobo.com')" title="Yoo-Math's website">Website</button>
+      <button class="btn" onclick="open_link('https://github.com/Yoo-Babobo/Yoo-Math')" title="Yoo-Math's GitHub">GitHub</button>
       <div id="notification">
         <p id="notification-title"></p>
         <p id="notification-message"></p>

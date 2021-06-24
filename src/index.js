@@ -1,5 +1,6 @@
 const { app, Menu, Tray, ipcMain, BrowserWindow, shell } = require("electron");
 const { autoUpdater } = require("electron-updater");
+const registerProtocolHandler = require("./scripts/register-protocol-handler");
 const path = require("path");
 
 const size = 550;
@@ -13,6 +14,9 @@ if (require("electron-squirrel-startup")) {
 }
 
 const createWindow = () => {
+  registerProtocolHandler();
+  app.setAsDefaultProtocolClient("yoo-math");
+
   mainWindow = new BrowserWindow({
     width: size,
     minWidth: size,
@@ -21,6 +25,7 @@ const createWindow = () => {
     minHeight: size,
     maxHeight: size,
     frame: false,
+    transparent: true,
     icon: path.join(__dirname, "assets/img/favicon.ico"),
     title: "Yoo-Math",
     darkTheme: true,
@@ -37,14 +42,19 @@ const createWindow = () => {
   mainWindow.resizable = false;
 
   menu = Menu.buildFromTemplate([
-    { label: "Home", icon: path.join(__dirname, "assets/img/logo-small.png"), click: () => {
+    { label: "Home", icon: path.join(__dirname, "assets/img/home-small.png"), click: () => {
+      mainWindow.show();
       home_page();
     }},
     { label: "About", icon: path.join(__dirname, "assets/img/info-small.png"), click: () => {
+      mainWindow.show();
       about_page();
     }},
     { label: "Website", icon: path.join(__dirname, "assets/img/globe-small.png"), click: () => {
       shell.openExternal("https://www.math.yoo-babobo.com");
+    }},
+    { label: "Quit", click: () => {
+      app.quit();
     }}
   ]);
 
@@ -120,7 +130,7 @@ ipcMain.on("hide", () => {
 });
 
 ipcMain.on("close", () => {
-  app.quit();
+  mainWindow.hide();
 });
 
 ipcMain.on("app-version", (event) => {

@@ -1,35 +1,38 @@
+const { ipcRenderer, shell } = require("electron");
+
+$(() => {
+    $("input, button, a").prop("tabIndex", -1);
+});
+
 function notification(title, message, button2_enabled = false, button2_text = null, button2 = () => {}) {
     $("#notification-title").text(title);
     $("#notification-message").text(message);
 
-    $("#notification-button1").css("opacity", 1);
-    setTimeout(() => {
-        $("#notification-button1").show();
-    }, 500);
     $("#notification-button1").on("click", () => {
-        $("#notification").css("opacity", 0);
-        $("#notification-button1").css("opacity", 0);
-        $("#notification-button2").css("opacity", 0);
-        setTimeout(() => {
-            $("#notification").hide();
-            $("#notification-button1").hide();
-            $("#notification-button2").hide();
-        }, 500);
+        hide_notification();
     });
 
     if (button2_enabled) {
         $("#notification-button2").text(button2_text);
-        $("#notification-button2").css("opacity", 1);
-        setTimeout(() => {
-            $("#notification-button2").show();
-        }, 500);
+        $("#notification-button2").show();
         $("#notification-button2").on("click", button2);
     }
 
     $("#notification").css("opacity", 1);
+    $("#notification").css("height", "33%");
+}
+
+function hide_notification() {
+    $("#notification").css("opacity", 0);
+    $("#notification").css("height", "0%");
+
     setTimeout(() => {
-        $("#notification").show();
+        $("#notification-button2").hide();
     }, 500);
+}
+
+function open_link(url) {
+    shell.openExternal(url);
 }
 
 ipcRenderer.on("pinned", (event, data) => {

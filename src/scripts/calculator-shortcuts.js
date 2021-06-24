@@ -39,8 +39,6 @@ $(window).on("keydown", (e) => {
             break;
 
         case "+":
-            type_symbol("+");
-            break;
         case "=":
             type_symbol("+");
             break;
@@ -48,11 +46,7 @@ $(window).on("keydown", (e) => {
             type_symbol("-");
             break;
         case "*":
-            type_symbol("×");
-            break;
         case "x":
-            type_symbol("×");
-            break;
         case "X":
             type_symbol("×");
             break;
@@ -73,14 +67,12 @@ $(window).on("keydown", (e) => {
             type(".");
             break;
         case "p":
-            type("π");
-            break;
         case "P":
-            type("π");
+            if (!e.ctrlKey) {
+                type("π");
+            }
             break;
         case "e":
-            type("e");
-            break;
         case "E":
             type("e");
             break;
