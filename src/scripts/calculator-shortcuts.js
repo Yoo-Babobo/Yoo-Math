@@ -1,9 +1,19 @@
 $(window).on("keydown", (e) => {
     if (e.ctrlKey && e.altKey) {
-        ipcRenderer.send('hide-me');
     } else if (e.ctrlKey && (e.key == "a" || e.key == "A")) {
         e.preventDefault();
-        select();
+
+        if (selected) {
+            unselect();
+        } else {
+            select();
+        }
+    } else if (e.ctrlKey && (e.key == "c" || e.key == "C")) {
+        if (selected) {
+            e.preventDefault();
+            navigator.clipboard.writeText($("#box").html());
+            unselect();
+        }
     }
 
     switch (e.key) {

@@ -11,12 +11,28 @@ setInterval(() => {
     }
 }, 20);
 
-$(document).on("focus", unselect);
-$(document).on("click", unselect);
-$(document).on("dblclick", unselect);
+$(() => {
+    $(document).on("focus", unselect);
+    $(document).on("click", unselect);
+    $(document).on("dblclick", unselect);
 
-$("button").on("focus", () => {
-    $("button").trigger("blur");
+    $("button").on("focus", () => {
+        $("button").trigger("blur");
+    });
+
+    $("#extra-functions-fake").hover(() => {
+        $("#extra-functions").css("opacity", 1);
+        $("#extra-functions").css("width", "66%");
+        $("#extra-functions-fake").css("opacity", 0);
+        $("#extra-functions-fake").css("height", 0);
+    });
+
+    $("#extra-functions").hover(() => {}, () => {
+        $("#extra-functions").css("opacity", 0);
+        $("#extra-functions").css("width", "12%");
+        $("#extra-functions-fake").css("opacity", 1);
+        $("#extra-functions-fake").css("height", "calc(100vh - 37.5px)");
+    });
 });
 
 function type(a) {

@@ -1,6 +1,6 @@
 const { app, Menu, Tray, ipcMain, BrowserWindow, shell } = require("electron");
 const { autoUpdater } = require("electron-updater");
-const registerProtocolHandler = require("./scripts/register-protocol-handler");
+const registerProtocolHandler = require("./src/scripts/register-protocol-handler");
 const path = require("path");
 
 const size = 550;
@@ -26,12 +26,11 @@ const createWindow = () => {
     maxHeight: size,
     frame: false,
     transparent: true,
-    icon: path.join(__dirname, "assets/img/favicon.ico"),
+    icon: path.join(__dirname, "src/assets/img/favicon.ico"),
     title: "Yoo-Math",
     darkTheme: true,
-    backgroundColor: "#2f3129",
-    roundedCorners: true,
     webPreferences: {
+      devTools: false,
       nodeIntegration: true,
       contextIsolation: false,
       accessibleTitle: "Yoo-Math"
@@ -42,15 +41,15 @@ const createWindow = () => {
   mainWindow.resizable = false;
 
   menu = Menu.buildFromTemplate([
-    { label: "Home", icon: path.join(__dirname, "assets/img/home-small.png"), click: () => {
+    { label: "Home", icon: path.join(__dirname, "src/assets/img/home-small.png"), click: () => {
       mainWindow.show();
       home_page();
     }},
-    { label: "About", icon: path.join(__dirname, "assets/img/info-small.png"), click: () => {
+    { label: "About", icon: path.join(__dirname, "src/assets/img/info-small.png"), click: () => {
       mainWindow.show();
       about_page();
     }},
-    { label: "Website", icon: path.join(__dirname, "assets/img/globe-small.png"), click: () => {
+    { label: "Website", icon: path.join(__dirname, "src/assets/img/globe-small.png"), click: () => {
       shell.openExternal("https://www.math.yoo-babobo.com");
     }},
     { label: "Quit", click: () => {
@@ -60,7 +59,7 @@ const createWindow = () => {
 
   Menu.setApplicationMenu(menu);
 
-  tray = new Tray(path.join(__dirname, "assets/img/favicon.ico"));
+  tray = new Tray(path.join(__dirname, "src/assets/img/favicon.ico"));
   tray.setToolTip("Yoo-Math");
   tray.setContextMenu(menu);
 
@@ -138,9 +137,9 @@ ipcMain.on("app-version", (event) => {
 });
 
 function home_page() {
-  mainWindow.loadFile(path.join(__dirname, "index.html"));
+  mainWindow.loadFile(path.join(__dirname, "src/index.html"));
 }
 
 function about_page() {
-  mainWindow.loadFile(path.join(__dirname, "about.html"));
+  mainWindow.loadFile(path.join(__dirname, "src/about.html"));
 }

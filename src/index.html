@@ -11,66 +11,79 @@
     <title>Yoo-Math</title>
   </head>
   <body>
-    <div id="top-bar">
-      <div></div>
-      <div>
-        <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
-        <button class="topbar-btn" id="close-btn" title="Close">✕</button>
+    <div class="main">
+      <div id="top-bar">
+        <div></div>
+        <div>
+          <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
+          <button class="topbar-btn" id="close-btn" title="Close">✕</button>
+        </div>
       </div>
-    </div>
-    <div id="menu-bar">
-      <button class="menubar-btn active" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/home-small.png" alt="Home" /></button>
-      <button class="menubar-btn" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="About" /></button>
-      <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
-    </div>
-    <div class="root">
-      <div id="last-calculation"></div>
-      <div id="box"></div>
-      <br>
-      <table>
-        <tbody>
-          <tr>
-            <td><button class="cal-btn-function" id="__function-square" title="Square"><i>x</i><sup>2</sup></button></td>
-            <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" title="Left parenthesis">(</button></td>
-            <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" title="Right parenthesis">)</button></td>
-            <td><button class="cal-btn-clear" id="__clear" title="Clear">C</button></td>
-            <td><button class="cal-btn-equals" id="__equals" title="Equals (Calculate)">=</button></td>
-          </tr>
-          <tr>
-            <td><button class="cal-btn-function" id="__function-square-root" title="Square root">√<i>x</i></button></td>
-            <td><button class="cal-btn" id="__number-7" title="7" title="Seven">7</button></td>
-            <td><button class="cal-btn" id="__number-8" title="8" title="Eight">8</button></td>
-            <td><button class="cal-btn" id="__number-9" title="9" title="Nine">9</button></td>
-            <td><button class="cal-btn-operation" id="__operation-add" title="Add">+</button></td>
-          </tr>
-          <tr>
-            <td><button class="cal-btn-function" id="__function-one-divided-by" title="One divided by">1/<i>x</i></button></td>
-            <td><button class="cal-btn" id="__number-4" title="Four">4</button></td>
-            <td><button class="cal-btn" id="__number-5" title="Five">5</button></td>
-            <td><button class="cal-btn" id="__number-6" title="Six">6</button></td>
-            <td><button class="cal-btn-operation" id="__operation-subtract" title="Subtract">-</button></td>
-          </tr>
-          <tr>
-            <td><button class="cal-btn-constant" id="__constant-pi" title="π (PI)">π</button></td>
-            <td><button class="cal-btn" id="__number-1" title="One">1</button></td>
-            <td><button class="cal-btn" id="__number-2" title="Two">2</button></td>
-            <td><button class="cal-btn" id="__number-3" title="Three">3</button></td>
-            <td><button class="cal-btn-operation" id="__operation-multiply" title="Multiply">×</button></td>
-          </tr>
-          <tr>
-            <td><button class="cal-btn-constant" id="__constant-e" title="e">e</button></td>
-            <td><button class="cal-btn-symbol" id="__symbol-period" title="Period">.</button></td>
-            <td><button class="cal-btn" id="__number-0" title="Zero">0</button></td>
-            <td><button class="cal-btn-operation" id="__operation-percent" title="Percent">%</button></td>
-            <td><button class="cal-btn-operation" id="__operation-divide" title="Divide">÷</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <div id="notification">
-        <p id="notification-title"></p>
-        <p id="notification-message"></p>
-        <button id="notification-button1">Dismiss</button>
-        <button id="notification-button2"></button>
+      <div id="menu-bar">
+        <button class="menubar-btn active" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="About" /></button>
+        <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+      </div>
+      <div class="root">
+        <div id="extra-functions-fake"></div>
+        <div id="extra-functions">
+          <p>Extra Functions</p>
+          <table>
+            <tbody>
+              <tr>
+                <td><button class="cal-btn-function" title="Function">F</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="last-calculation"></div>
+        <div id="box"></div>
+        <br>
+        <table>
+          <tbody>
+            <tr>
+              <td><button class="cal-btn-function" id="__function-square" title="Square"><i>x</i><sup>2</sup></button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" title="Left parenthesis">(</button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" title="Right parenthesis">)</button></td>
+              <td><button class="cal-btn-clear" id="__clear" title="Clear">C</button></td>
+              <td><button class="cal-btn-equals" id="__equals" title="Equals (Calculate)">=</button></td>
+            </tr>
+            <tr>
+              <td><button class="cal-btn-function" id="__function-square-root" title="Square root">√<i>x</i></button></td>
+              <td><button class="cal-btn" id="__number-7" title="Seven">7</button></td>
+              <td><button class="cal-btn" id="__number-8" title="Eight">8</button></td>
+              <td><button class="cal-btn" id="__number-9" title="Nine">9</button></td>
+              <td><button class="cal-btn-operation" id="__operation-add" title="Add">+</button></td>
+            </tr>
+            <tr>
+              <td><button class="cal-btn-function" id="__function-one-divided-by" title="One divided by">1/<i>x</i></button></td>
+              <td><button class="cal-btn" id="__number-4" title="Four">4</button></td>
+              <td><button class="cal-btn" id="__number-5" title="Five">5</button></td>
+              <td><button class="cal-btn" id="__number-6" title="Six">6</button></td>
+              <td><button class="cal-btn-operation" id="__operation-subtract" title="Subtract">-</button></td>
+            </tr>
+            <tr>
+              <td><button class="cal-btn-constant" id="__constant-pi" title="π (PI)">π</button></td>
+              <td><button class="cal-btn" id="__number-1" title="One">1</button></td>
+              <td><button class="cal-btn" id="__number-2" title="Two">2</button></td>
+              <td><button class="cal-btn" id="__number-3" title="Three">3</button></td>
+              <td><button class="cal-btn-operation" id="__operation-multiply" title="Multiply">×</button></td>
+            </tr>
+            <tr>
+              <td><button class="cal-btn-constant" id="__constant-e" title="e">e</button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-period" title="Period">.</button></td>
+              <td><button class="cal-btn" id="__number-0" title="Zero">0</button></td>
+              <td><button class="cal-btn-operation" id="__operation-percent" title="Percent">%</button></td>
+              <td><button class="cal-btn-operation" id="__operation-divide" title="Divide">÷</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="notification">
+          <p id="notification-title"></p>
+          <p id="notification-message"></p>
+          <button id="notification-button1">Dismiss</button>
+          <button id="notification-button2"></button>
+        </div>
       </div>
       <p id="version">—</p>
     </div>

@@ -1,9 +1,9 @@
 {
   "name": "yoomath",
   "productName": "Yoo-Math",
-  "version": "1.3.0",
-  "description": "A place for math...",
-  "main": "src/index.js",
+  "version": "1.4.0",
+  "description": "A simple math application with measurement converters and a beautiful design.",
+  "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -35,7 +35,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "Yoo-Babobo Dev",
+    "name": "Yoo-Babobo",
     "email": "dev@yoo-babobo.com"
   },
   "license": "MIT",
@@ -46,7 +46,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "calculator"
+            "name": "yoomath"
           }
         },
         {

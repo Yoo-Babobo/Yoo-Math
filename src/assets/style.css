@@ -42,8 +42,12 @@
     background: #2f3129;
 }
 
+::selection {
+    background-color: skyblue;
+    color: #343434;
+}
+
 body {
-    background-color: #2f3129;
     color: #d3d3d3;
 }
 
@@ -86,6 +90,7 @@ li {
     justify-content: space-between;
     align-items: center;
     height: 30px;
+    border-radius: 0 10px 0 0;
     background: #272727;
     -webkit-app-region: drag;
 }
@@ -103,6 +108,10 @@ li {
     letter-spacing: 3px;
 }
 
+#close-btn {
+    border-radius: 0 10px 0 0;
+}
+
 #close-btn:hover {
     background-color: firebrick;
 }
@@ -114,8 +123,13 @@ li {
     bottom: 0;
     z-index: 999999;
     width: 30px;
+    border-radius: 10px 0 0 10px;
     background: #272727;
     -webkit-app-region: drag;
+}
+
+#home-btn {
+    border-radius: 10px 0 5px 0;
 }
 
 #pin-btn {
@@ -123,6 +137,7 @@ li {
     left: 0;
     bottom: 0;
     z-index: 999999;
+    border-radius: 0 5px 0 10px;
 }
 
 #pin-btn.pinned {
@@ -184,7 +199,7 @@ li {
     height: 0%;
     margin: 7.5px;
     padding: 20px;
-    z-index: 10;
+    z-index: 1000000;
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
     transition: all .5s;
@@ -239,9 +254,38 @@ li {
 
 #scroll-bar {
     background-image: linear-gradient(to right,#272727, #ffde59);
-    width: 0;
+    width: 0%;
     height: 2.5px;
     border-radius: 5px;
+}
+
+#extra-functions-fake {
+    position: fixed;
+    top: 30%;
+    left: 37.5px;
+    bottom: 0;
+    z-index: 888888;
+    width: 12%;
+    height: calc(100vh - 37.5px);
+    background-color: #343434;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .5s ease-in-out;
+}
+
+#extra-functions {
+    position: fixed;
+    top: 30%;
+    left: 37.5px;
+    bottom: 0;
+    z-index: 777777;
+    opacity: 0;
+    width: 12%;
+    height: calc(100vh - 37.5px);
+    background-color: #343434;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .5s ease-in-out;
 }
 
 .topbar-btn {
@@ -262,7 +306,7 @@ li {
     display: block;
     width: 30px;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     -webkit-app-region: no-drag;
 }
 
@@ -274,10 +318,26 @@ li {
     background-color: rgb(55, 161, 91);
 }
 
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -999999;
+    background-color: #2f3129;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 10px;
+}
+
 .root {
+    color: #d3d3d3;
     margin-top: 30px;
     margin-left: 30px;
     padding: 20px;
+    height: 90vh;
+    overflow: scroll;
 }
 
 .btn {
@@ -291,7 +351,7 @@ li {
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(2px);
 }
 
 .cal-btn {
