@@ -2,6 +2,9 @@
 A simple math application with measurement converters and a beautiful design.
 ![Yoo-Math Logo](https://www.media.yoo-babobo.com/images/logos/Yoo-Math.png)
 ___
+## Download
+Yoo-Math is currently under active development, and pre-releases will come out soon. Stay tuned!
+___
 ## Features
 - Supports parentheses
 - Supports any power
