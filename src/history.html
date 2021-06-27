@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/history.css" />
+    <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+      let $ = require("jquery");
+      let jQuery = $;
+    </script>
+    <title>Yoo-Math Histoty</title>
+  </head>
+  <body>
+    <div class="main">
+      <div id="top-bar">
+        <div></div>
+        <div>
+          <button class="topbar-btn" id="minimize-btn" aria-label="Minimize" data-microtip-position="bottom-left" role="tooltip">—</button>
+          <button class="topbar-btn" id="close-btn" aria-label="Close" data-microtip-position="bottom-left" role="tooltip">✕</button>
+        </div>
+      </div>
+      <div id="menu-bar">
+        <button class="menubar-btn" id="home-btn" aria-label="Yoo-Math homepage" data-microtip-position="right" role="tooltip"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn" id="about-btn" aria-label="About Yoo-Math" data-microtip-position="right" role="tooltip"><img src="assets/img/info-small.png" alt="About" /></button>
+        <button class="menubar-btn active" id="history-btn" aria-label="Yoo-Math History" data-microtip-position="right" role="tooltip"><img src="assets/img/history-small.png" alt="History" /></button>
+        <button class="menubar-btn" id="pin-btn" aria-label="Pin Yoo-Math to screen" data-microtip-position="right" role="tooltip"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+      </div>
+      <div class="root">
+        <h1>History</h1>
+        <button class="btn" onclick="clear_history()" aria-label="This is irreversible" data-microtip-position="top" role="tooltip">Clear History</button>
+        <br><br>
+        <div id="history"></div>
+        <div id="notification">
+          <p id="notification-title"></p>
+          <p id="notification-message"></p>
+          <button id="notification-button1">Dismiss</button>
+          <button id="notification-button2"></button>
+        </div>
+      </div>
+      <p id="version">—</p>
+    </div>
+    <link rel="stylesheet" href="../node_modules/microtip/microtip.min.css" />
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/history.js"></script>
+  </body>
+</html>

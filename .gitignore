@@ -96,3 +96,6 @@ dist/
 
 # VS Code
 .vscode/
+
+# History File
+history.yoo

@@ -1,7 +1,7 @@
 {
   "name": "yoomath",
   "productName": "Yoo-Math",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "description": "A simple math application with measurement converters and a beautiful design.",
   "main": "main.js",
   "scripts": {
@@ -69,7 +69,9 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^4.3.9",
+    "fs": "0.0.1-security",
     "jquery": "^3.6.0",
+    "microtip": "^0.2.2",
     "winreg": "^1.2.4"
   },
   "devDependencies": {

@@ -3,6 +3,16 @@ var n = false;
 $(() => {
   setInterval(() => {
     ipcRenderer.send("pinned");
+
+    fs.access("history.yoo", fs.F_OK, (err) => {
+      if (err) {
+        fs.writeFile("history.yoo", "", (err) => {
+          if (err) return;
+        });
+
+        return;
+      }
+    });
   }, 20);
 
   $(document).on("keydown", (e) => {
@@ -52,5 +62,9 @@ $(() => {
 
   $("#about-btn").on("click", () => {
     ipcRenderer.send("about-page");
+  });
+
+  $("#history-btn").on("click", () => {
+    ipcRenderer.send("history-page");
   });
 });

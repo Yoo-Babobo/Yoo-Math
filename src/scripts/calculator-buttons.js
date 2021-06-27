@@ -63,13 +63,23 @@ $("#__constant-e").on("click", () => {
 })
 
 $("#__function-square").on("click", () => {
-    power();
+    type_symbol("<sup>2</sup>");
+    // power();
 })
 $("#__function-square-root").on("click", () => {
-    square_root();
+    type("√(");
+    // square_root();
 })
 $("#__function-one-divided-by").on("click", () => {
     run("1÷(" + $("#box").html() + ")");
+})
+$("#__function-power").on("click", () => {
+    type_symbol("<sup>" +  $("#power-num").val() + "</sup>");
+    // power($("#box").html(), $("#power-num").val());
+})
+$("#__function-root").on("click", () => {
+    type("<roota><i>" + $("#root-num").val() + "</i>√(</roota>");
+    // root($("#box").html(), $("#root-num").val());
 })
 
 $("#__equals").on("click", () => {

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/calculator.css" />
     <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin>
     <script>
       let $ = require("jquery");
@@ -15,23 +16,37 @@
       <div id="top-bar">
         <div></div>
         <div>
-          <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
-          <button class="topbar-btn" id="close-btn" title="Close">✕</button>
+          <button class="topbar-btn" id="minimize-btn" aria-label="Minimize" data-microtip-position="bottom-left" role="tooltip">—</button>
+          <button class="topbar-btn" id="close-btn" aria-label="Close" data-microtip-position="bottom-left" role="tooltip">✕</button>
         </div>
       </div>
       <div id="menu-bar">
-        <button class="menubar-btn active" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/home-small.png" alt="Home" /></button>
-        <button class="menubar-btn" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="About" /></button>
-        <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+        <button class="menubar-btn active" id="home-btn" aria-label="Yoo-Math homepage" data-microtip-position="right" role="tooltip"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn" id="about-btn" aria-label="About Yoo-Math" data-microtip-position="right" role="tooltip"><img src="assets/img/info-small.png" alt="About" /></button>
+        <button class="menubar-btn" id="history-btn" aria-label="Yoo-Math History" data-microtip-position="right" role="tooltip"><img src="assets/img/history-small.png" alt="History" /></button>
+        <button class="menubar-btn" id="pin-btn" aria-label="Pin Yoo-Math to screen" data-microtip-position="right" role="tooltip"><img src="assets/img/pin-small.png" alt="Pin" /></button>
       </div>
       <div class="root">
-        <div id="extra-functions-fake"></div>
+        <div id="extra-functions-fake">
+          <p>&#10140;</p>
+        </div>
         <div id="extra-functions">
           <p>Extra Functions</p>
           <table>
             <tbody>
               <tr>
-                <td><button class="cal-btn-function" title="Function">F</button></td>
+                <td>
+                  <div class="cal-btn-function-wrapper" aria-label="Power" data-microtip-position="top" role="tooltip">
+                    <button class="cal-btn-function-special" id="__function-power"><i>x</i><sup><i>x</i></sup></button>
+                    <input type="number" class="cal-btn-function-num" id="power-num" min="-999999" max="999999" value="3" />
+                  </div>
+                </td>
+                <td>
+                  <div class="cal-btn-function-wrapper" aria-label="Root" data-microtip-position="top" role="tooltip">
+                    <button class="cal-btn-function-special" id="__function-root"><i>x</i> √<i>x</i></button>
+                    <input type="number" class="cal-btn-function-num" id="root-num" min="-999999" max="999999" value="3" />
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -42,39 +57,39 @@
         <table>
           <tbody>
             <tr>
-              <td><button class="cal-btn-function" id="__function-square" title="Square"><i>x</i><sup>2</sup></button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" title="Left parenthesis">(</button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" title="Right parenthesis">)</button></td>
-              <td><button class="cal-btn-clear" id="__clear" title="Clear">C</button></td>
-              <td><button class="cal-btn-equals" id="__equals" title="Equals (Calculate)">=</button></td>
+              <td><button class="cal-btn-function" id="__function-square" aria-label="Square" data-microtip-position="top" role="tooltip"><i>x</i><sup>2</sup></button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" aria-label="Left parenthesis" data-microtip-position="top" role="tooltip">(</button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" aria-label="Right parenthesis" data-microtip-position="top" role="tooltip">)</button></td>
+              <td><button class="cal-btn-clear" id="__clear" aria-label="Clear" data-microtip-position="top" role="tooltip">C</button></td>
+              <td><button class="cal-btn-equals" id="__equals" aria-label="Equals (Calculate)" data-microtip-position="top" role="tooltip">=</button></td>
             </tr>
             <tr>
-              <td><button class="cal-btn-function" id="__function-square-root" title="Square root">√<i>x</i></button></td>
-              <td><button class="cal-btn" id="__number-7" title="Seven">7</button></td>
-              <td><button class="cal-btn" id="__number-8" title="Eight">8</button></td>
-              <td><button class="cal-btn" id="__number-9" title="Nine">9</button></td>
-              <td><button class="cal-btn-operation" id="__operation-add" title="Add">+</button></td>
+              <td><button class="cal-btn-function" id="__function-square-root" aria-label="Square root" data-microtip-position="top-right" role="tooltip">√<i>x</i></button></td>
+              <td><button class="cal-btn" id="__number-7" aria-label="Seven" data-microtip-position="top" role="tooltip">7</button></td>
+              <td><button class="cal-btn" id="__number-8" aria-label="Eight" data-microtip-position="top" role="tooltip">8</button></td>
+              <td><button class="cal-btn" id="__number-9" aria-label="Nine" data-microtip-position="top" role="tooltip">9</button></td>
+              <td><button class="cal-btn-operation" id="__operation-add" aria-label="Add" data-microtip-position="top" role="tooltip">+</button></td>
             </tr>
             <tr>
-              <td><button class="cal-btn-function" id="__function-one-divided-by" title="One divided by">1/<i>x</i></button></td>
-              <td><button class="cal-btn" id="__number-4" title="Four">4</button></td>
-              <td><button class="cal-btn" id="__number-5" title="Five">5</button></td>
-              <td><button class="cal-btn" id="__number-6" title="Six">6</button></td>
-              <td><button class="cal-btn-operation" id="__operation-subtract" title="Subtract">-</button></td>
+              <td><button class="cal-btn-function" id="__function-one-divided-by" aria-label="One divided by" data-microtip-position="top-right" role="tooltip">1/<i>x</i></button></td>
+              <td><button class="cal-btn" id="__number-4" aria-label="Four" data-microtip-position="top" role="tooltip">4</button></td>
+              <td><button class="cal-btn" id="__number-5" aria-label="Five" data-microtip-position="top" role="tooltip">5</button></td>
+              <td><button class="cal-btn" id="__number-6" aria-label="Six" data-microtip-position="top" role="tooltip">6</button></td>
+              <td><button class="cal-btn-operation" id="__operation-subtract" aria-label="Subtract" data-microtip-position="top" role="tooltip">-</button></td>
             </tr>
             <tr>
-              <td><button class="cal-btn-constant" id="__constant-pi" title="π (PI)">π</button></td>
-              <td><button class="cal-btn" id="__number-1" title="One">1</button></td>
-              <td><button class="cal-btn" id="__number-2" title="Two">2</button></td>
-              <td><button class="cal-btn" id="__number-3" title="Three">3</button></td>
-              <td><button class="cal-btn-operation" id="__operation-multiply" title="Multiply">×</button></td>
+              <td><button class="cal-btn-constant" id="__constant-pi" aria-label="π (PI)" data-microtip-position="top" role="tooltip">π</button></td>
+              <td><button class="cal-btn" id="__number-1" aria-label="One" data-microtip-position="top" role="tooltip">1</button></td>
+              <td><button class="cal-btn" id="__number-2" aria-label="Two" data-microtip-position="top" role="tooltip">2</button></td>
+              <td><button class="cal-btn" id="__number-3" aria-label="Three" data-microtip-position="top" role="tooltip">3</button></td>
+              <td><button class="cal-btn-operation" id="__operation-multiply" aria-label="Multiply" data-microtip-position="top" role="tooltip">×</button></td>
             </tr>
             <tr>
-              <td><button class="cal-btn-constant" id="__constant-e" title="e">e</button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-period" title="Period">.</button></td>
-              <td><button class="cal-btn" id="__number-0" title="Zero">0</button></td>
-              <td><button class="cal-btn-operation" id="__operation-percent" title="Percent">%</button></td>
-              <td><button class="cal-btn-operation" id="__operation-divide" title="Divide">÷</button></td>
+              <td><button class="cal-btn-constant" id="__constant-e" aria-label="e" data-microtip-position="top" role="tooltip">e</button></td>
+              <td><button class="cal-btn-symbol" id="__symbol-period" aria-label="Period" data-microtip-position="top" role="tooltip">.</button></td>
+              <td><button class="cal-btn" id="__number-0" aria-label="Zero" data-microtip-position="top" role="tooltip">0</button></td>
+              <td><button class="cal-btn-operation" id="__operation-percent" aria-label="Percent" data-microtip-position="top" role="tooltip">%</button></td>
+              <td><button class="cal-btn-operation" id="__operation-divide" aria-label="Divide" data-microtip-position="top" role="tooltip">÷</button></td>
             </tr>
           </tbody>
         </table>
@@ -87,6 +102,7 @@
       </div>
       <p id="version">—</p>
     </div>
+    <link rel="stylesheet" href="../node_modules/microtip/microtip.min.css" />
     <script src="scripts/functions.js"></script>
     <script src="scripts/menu.js"></script>
     <script src="scripts/calculator.js"></script>

@@ -40,7 +40,7 @@ const createWindow = () => {
   home_page();
   mainWindow.resizable = false;
 
-  menu = Menu.buildFromTemplate([
+  /*menu = Menu.buildFromTemplate([
     { label: "Home", icon: path.join(__dirname, "src/assets/img/home-small.png"), click: () => {
       mainWindow.show();
       home_page();
@@ -48,6 +48,10 @@ const createWindow = () => {
     { label: "About", icon: path.join(__dirname, "src/assets/img/info-small.png"), click: () => {
       mainWindow.show();
       about_page();
+    }},
+    { label: "History", icon: path.join(__dirname, "src/assets/img/history-small.png"), click: () => {
+      mainWindow.show();
+      history_page();
     }},
     { label: "Website", icon: path.join(__dirname, "src/assets/img/globe-small.png"), click: () => {
       shell.openExternal("https://www.math.yoo-babobo.com");
@@ -65,7 +69,7 @@ const createWindow = () => {
 
   tray.on("click", () => {
     mainWindow.show();
-  });
+  });*/
 
   mainWindow.once("ready-to-show", () => {
     autoUpdater.checkForUpdatesAndNotify();
@@ -102,6 +106,10 @@ ipcMain.on("about-page", () => {
   about_page();
 });
 
+ipcMain.on("history-page", () => {
+  history_page();
+});
+
 ipcMain.on("open-menu", (event) => {
   menu.popup(BrowserWindow.fromWebContents(event.sender));
 });
@@ -129,7 +137,7 @@ ipcMain.on("hide", () => {
 });
 
 ipcMain.on("close", () => {
-  mainWindow.hide();
+  app.quit();
 });
 
 ipcMain.on("app-version", (event) => {
@@ -142,4 +150,8 @@ function home_page() {
 
 function about_page() {
   mainWindow.loadFile(path.join(__dirname, "src/about.html"));
+}
+
+function history_page() {
+  mainWindow.loadFile(path.join(__dirname, "src/history.html"));
 }

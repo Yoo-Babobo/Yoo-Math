@@ -1,4 +1,5 @@
 const { ipcRenderer, shell } = require("electron");
+const fs = require("fs");
 
 $(() => {
     $("input, button, a").prop("tabIndex", -1);
@@ -31,15 +32,29 @@ function hide_notification() {
     }, 500);
 }
 
+function add_to_history(math) {
+    fs.appendFile("history.yoo", math + "\n", (err) => {
+        if (err) return;
+    });
+}
+
+function clear_history() {
+    fs.writeFile("history.yoo", "", (err) => {
+        if (err) return;
+    });
+
+    $("#history").html("<p></p>");
+}
+
 function open_link(url) {
     shell.openExternal(url);
 }
 
 ipcRenderer.on("pinned", (event, data) => {
     if (data.pinned) {
-        $("#pin-btn").addClass("pinned");
+        $("#pin-btn").addClass("active");
     } else {
-        $("#pin-btn").removeClass("pinned");
+        $("#pin-btn").removeClass("active");
     }
 });
 

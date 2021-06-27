@@ -15,14 +15,15 @@
       <div id="top-bar">
         <div></div>
         <div>
-          <button class="topbar-btn" id="minimize-btn" title="Minimize">—</button>
-          <button class="topbar-btn" id="close-btn" title="Close">✕</button>
+          <button class="topbar-btn" id="minimize-btn" aria-label="Minimize" data-microtip-position="bottom-left" role="tooltip">—</button>
+          <button class="topbar-btn" id="close-btn" aria-label="Close" data-microtip-position="bottom-left" role="tooltip">✕</button>
         </div>
       </div>
       <div id="menu-bar">
-        <button class="menubar-btn" id="home-btn" title="Yoo-Math homepage"><img src="assets/img/home-small.png" alt="Home" /></button>
-        <button class="menubar-btn active" id="about-btn" title="About Yoo-Math"><img src="assets/img/info-small.png" alt="About" /></button>
-        <button class="menubar-btn" id="pin-btn" title="Pin Yoo-Math to screen"><img src="assets/img/pin-small.png" alt="Pin" /></button>
+        <button class="menubar-btn" id="home-btn" aria-label="Yoo-Math homepage" data-microtip-position="right" role="tooltip"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn active" id="about-btn" aria-label="About Yoo-Math" data-microtip-position="right" role="tooltip"><img src="assets/img/info-small.png" alt="About" /></button>
+        <button class="menubar-btn" id="history-btn" aria-label="Yoo-Math History" data-microtip-position="right" role="tooltip"><img src="assets/img/history-small.png" alt="History" /></button>
+        <button class="menubar-btn" id="pin-btn" aria-label="Pin Yoo-Math to screen" data-microtip-position="right" role="tooltip"><img src="assets/img/pin-small.png" alt="Pin" /></button>
       </div>
       <div class="root">
         <div id="scroll-container">
@@ -35,7 +36,7 @@
         <img src="assets/img/logo.png" style="width: 50%;" alt="The Yoo-Math Logo" />
         <h2>What it's made of</h2>
         <p>
-          Yoo-Math was made with JavaScript, HTML, and CSS. <a onclick="open_link('https://www.electronjs.org/')" title="Electron's website">Electron.js</a> was used to turn it into an app.
+          Yoo-Math is made with JavaScript, HTML, and CSS. <a onclick="open_link('https://www.electronjs.org/')" aria-label="Electron's website" data-microtip-position="bottom" role="tooltip">Electron.js</a> was used to turn it into an app.
         </p>
         <h2>Features</h2>
         <ul>
@@ -50,8 +51,8 @@
           <li>Auto updating</li>
         </ul>
         <h2>Misc</h2>
-        <button class="btn" onclick="open_link('https://www.math.yoo-babobo.com')" title="Yoo-Math's website">Website</button>
-        <button class="btn" onclick="open_link('https://github.com/Yoo-Babobo/Yoo-Math')" title="Yoo-Math's GitHub">GitHub</button>
+        <button class="btn" onclick="open_link('https://www.math.yoo-babobo.com')" aria-label="Yoo-Math's website" data-microtip-position="top" role="tooltip">Website</button>
+        <button class="btn" onclick="open_link('https://github.com/Yoo-Babobo/Yoo-Math')" aria-label="Yoo-Math's GitHub"data-microtip-position="top" role="tooltip">GitHub</button>
         <br><br>
         <br><br>
         <div id="notification">
@@ -63,6 +64,7 @@
       </div>
       <p id="version">—</p>
     </div>
+    <link rel="stylesheet" href="../node_modules/microtip/microtip.min.css" />
     <script src="scripts/functions.js"></script>
     <script src="scripts/menu.js"></script>
   </body>

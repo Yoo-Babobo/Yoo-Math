@@ -1,0 +1,277 @@
+#box {
+    background-color: #d3d3d3;
+    color: #343434;
+    font-size: 20px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    width: 90%;
+    height: 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    user-select: text;
+}
+
+#box.selected {
+    background-color: #a3b2e0;
+}
+
+#last-calculation {
+    background-color: #808080;
+    color: #d3d3d3;
+    font-size: 15px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    width: 90%;
+    height: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    user-select: text;
+}
+
+#extra-functions-fake {
+    position: fixed;
+    top: 30%;
+    left: 37.5px;
+    bottom: 0;
+    z-index: 888888;
+    width: 12%;
+    height: calc(100vh - 37.5px);
+    background-color: #444444;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .5s ease-in-out;
+}
+
+#extra-functions-fake p {
+    margin: auto;
+    transform: translateY(150px);
+}
+
+#extra-functions-fake:hover p {
+    transform: translateY(150px) translateX(5px);
+}
+
+#extra-functions {
+    position: fixed;
+    top: 30%;
+    left: 37.5px;
+    bottom: 0;
+    z-index: 777777;
+    opacity: 0;
+    width: 12%;
+    height: calc(100vh - 37.5px);
+    background-color: #343434;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all .5s ease-in-out;
+}
+
+.cal-btn {
+    background-color: tomato;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-symbol {
+    background-color: #ffde59;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-symbol:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-operation {
+    background-color: palegreen;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-operation:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-constant {
+    background-color: #f28500;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-constant:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-function-wrapper {
+    width: 100px;
+    margin: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-function-wrapper:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-function {
+    background-color: #9867c5;
+    color: #d3d3d3;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-function:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-function-special {
+    background-color: #9867c5;
+    color: #d3d3d3;
+    font-weight: bold;
+    float: left;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px 0 0 5px;
+}
+
+.cal-btn-function-num {
+    background-color: #79519e;
+    color: #d3d3d3;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 0 5px 5px 0;
+}
+
+/*.cal-btn-function-num {
+    position: relative;
+}
+
+.cal-btn-function-num input {
+    background-color: #79519e;
+    color: #d3d3d3;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 0 5px 5px 0;
+}
+
+.cal-btn-function-num-nav {
+    float: left;
+    position: relative;
+    height: 50px;
+}
+
+.cal-btn-function-num-button {
+    background-color: #79519e;
+    color: #d3d3d3;
+    position: relative;
+    border: none;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    width: 21px;
+    color: #333;
+    font-size: 13px;
+    font-family: "FontAwesome" !important;
+    padding: 0;
+    transform: translateX(140%);
+}
+
+.cal-btn-function-num-button.cal-btn-function-num-up {
+    position: absolute;
+    height: 50%;
+    top: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    font-family: "FontAwesome";
+    border-radius: 0 5px 0 0;
+}
+
+.cal-btn-function-num-button.cal-btn-function-num-down {
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    font-family: "FontAwesome";
+    border-radius: 0 0 5px 0;
+}*/
+
+.cal-btn-equals {
+    background-color: royalblue;
+    color: #d3d3d3;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-equals:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
+
+.cal-btn-clear {
+    background-color: aqua;
+    color: #343434;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-clear:hover {
+    box-shadow: none;
+    transform: scale(.95);
+}
