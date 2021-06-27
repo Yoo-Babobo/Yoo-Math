@@ -17,4 +17,7 @@ ___
 - Auto updating
 ___
 ## Preview
-![Yoo-Math Preview 1](https://www.media.yoo-babobo.com/images/previews/Yoo-Math_1.png)
+![Yoo-Math Preview 1](https://www.media.yoo-babobo.com/images/previews/Yoo-Math_2.png)
+![Yoo-Math Preview 1](https://www.media.yoo-babobo.com/images/previews/Yoo-Math_3.png)
+![Yoo-Math Preview 1](https://www.media.yoo-babobo.com/images/previews/Yoo-Math_4.png)
+![Yoo-Math Preview 1](https://www.media.yoo-babobo.com/images/previews/Yoo-Math_5.png)
