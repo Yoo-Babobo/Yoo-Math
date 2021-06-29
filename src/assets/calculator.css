@@ -13,6 +13,19 @@
     user-select: text;
 }
 
+#box sup {
+    color: green;
+    user-select: text;
+}
+
+#box roota {
+    user-select: text;
+}
+
+#box roota i {
+    user-select: text;
+}
+
 #box.selected {
     background-color: #a3b2e0;
 }
@@ -29,6 +42,19 @@
     height: 20px;
     overflow-x: auto;
     overflow-y: hidden;
+    user-select: text;
+}
+
+#last-calculation sup {
+    color: lime;
+    user-select: text;
+}
+
+#last-calculation roota {
+    user-select: text;
+}
+
+#last-calculation roota i {
     user-select: text;
 }
 

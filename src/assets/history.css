@@ -11,3 +11,16 @@
 #history p {
     user-select: text;
 }
+
+#history sup {
+    color: lime;
+    user-select: text;
+}
+
+#history roota {
+    user-select: text;
+}
+
+#history roota i {
+    user-select: text;
+}

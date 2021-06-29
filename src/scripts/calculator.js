@@ -60,18 +60,30 @@ $(() => {
         $("#extra-functions").css("opacity", 1);
         $("#extra-functions").css("width", "66%");
         $("#extra-functions-fake").css("opacity", 0);
+        $("#extra-functions-fake").css("z-index", 0);
     });
 
     $("#extra-functions").hover(() => {}, () => {
         $("#extra-functions").css("opacity", 0);
         $("#extra-functions").css("width", "12%");
         $("#extra-functions-fake").css("opacity", 1);
+        $("#extra-functions-fake").css("z-index", 888888);
     });
 });
 
 function type(a) {
     clear_if_calculated();
-    $("#box").append(a);
+    
+    if (a == "π" || a == "e" || a == "(") {
+        if ($("#box").html().toString().slice(-1).match(/\d|π|e|\)/)) {
+            $("#box").append("×" + a);
+        } else {
+            $("#box").append(a);
+        }
+    } else {
+        $("#box").append(a);
+    }
+
     $("#box").scrollLeft(999999999);
 }
 
