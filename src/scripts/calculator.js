@@ -74,14 +74,18 @@ $(() => {
 function type(a) {
     clear_if_calculated();
     
-    if (a == "π" || a == "e" || a == "(") {
-        if ($("#box").html().toString().slice(-1).match(/\d|π|e|\)/)) {
+    if (a == "π" || a == "e" || a == "∞" || a == "(" || match_functions(a)) {
+        if ($("#box").html().toString().slice(-1).match(/\d|π|e|∞|\)/g)) {
             $("#box").append("×" + a);
         } else {
             $("#box").append(a);
         }
     } else {
-        $("#box").append(a);
+        if (a != ")" && $("#box").html().toString().slice(-1).match(/π|e|∞|\)/g)) {
+            $("#box").append("×" + a);
+        } else {
+            $("#box").append(a);
+        }
     }
 
     $("#box").scrollLeft(999999999);
@@ -95,15 +99,18 @@ function type_symbol(a) {
 
 function run(raw_math = $("#box").html()) {
     var math = raw_math
+        .replace(/∞/g, "Infinity")
         .replace(/×/g, "*")
         .replace(/÷/g, "/")
         .replace(/%/g, "/100")
         .replace(/π/g, Math.PI)
         .replace(/e/g, Math.E)
-        .replace(/<sup>/g, "**")
-        .replace(/<\/sup>/g, "")
-        .replace(/\<roota\>\<i\>(.*)\<\/i\>√\(\<\/roota\>(.*)\)/g, "Math.pow($2, 1 / $1)")
-        .replace(/√/g, "Math.sqrt");
+        .replace(/\<function\>\<i\>sin\<\/i\>\(\<\/function\>/g, "Math.sin(")
+        .replace(/\<function\>\<i\>cos\<\/i\>\(\<\/function\>/g, "Math.cos(")
+        .replace(/\<function\>\<i\>tan\<\/i\>\(\<\/function\>/g, "Math.tan(")
+        .replace(/\<sup\>(.*)\<\/sup\>/g, "** $1")
+        .replace(/\<sqrt\>√\(\<\/sqrt\>/g, "Math.sqrt(")
+        .replace(/\<roota\>\<i\>(.*)\<\/i\>√\(\<\/roota\>(.*)\)/g, "Math.pow($2, 1 / $1)");
     var output = eval(math).toString().replace(/Infinity/g, "∞");
 
     $("#box").html(output);
@@ -112,7 +119,7 @@ function run(raw_math = $("#box").html()) {
     calculated = true;
 }
 
-function power(math = $("#box").html(), power = 2) {
+/*function power(math = $("#box").html(), power = 2) {
     math = math
         .replace(/×/g, "*")
         .replace(/÷/g, "/")
@@ -155,7 +162,7 @@ function root(math = $("#box").html(), root = 3) {
     set_last_calculation(root + "√(" + math + ")=" + output);
     add_to_history(root + "√(" + math + ")=" + output);
     calculated = true;
-}
+}*/
 
 function clear(del = false) {
     if (selected) {
@@ -169,16 +176,24 @@ function clear(del = false) {
         $("#box").html("");
     } else {
         if (del) {
-            if ($("#box").html().toString().slice(0, 5) == "<sup>") {
+            if ($("#box").html().toString().slice(0, 10) == "<function>") {
+                $("#box function:first").remove();
+            } else if ($("#box").html().toString().slice(0, 5) == "<sup>") {
                 $("#box sup:first").remove();
+            } else if ($("#box").html().toString().slice(0, 6) == "<sqrt>") {
+                $("#box sqrt:first").remove();
             } else if ($("#box").html().toString().slice(0, 7) == "<roota>") {
                 $("#box roota:first").remove();
             } else {
                 $("#box").html($("#box").html().slice(1));
             }
         } else {
-            if ($("#box").html().toString().slice(-6) == "</sup>") {
+            if ($("#box").html().toString().slice(-11) == "</function>") {
+                $("#box function:last").remove();
+            } else if ($("#box").html().toString().slice(-6) == "</sup>") {
                 $("#box sup:last").remove();
+            } else if ($("#box").html().toString().slice(-7) == "</sqrt>") {
+                $("#box sqrt:last").remove();
             } else if ($("#box").html().toString().slice(-8) == "</roota>") {
                 $("#box roota:last").remove();
             } else {
@@ -215,4 +230,12 @@ function unselect() {
 function set_last_calculation(math) {
     $("#last-calculation").html(math);
     $("#last-calculation").scrollLeft(999999999);
+}
+
+function match_functions(data) {
+    if (data.toString().match(/\<function\>\<i\>(.*)\<\/i\>\(\<\/function\>|\<sqrt\>√\(\<\/sqrt\>|\<roota\>\<i\>(.*)\<\/i\>√\(\<\/roota\>/g)) {
+        return true;
+    } else {
+        return false;
+    }
 }

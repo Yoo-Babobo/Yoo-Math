@@ -67,11 +67,12 @@ $("#__function-square").on("click", () => {
     // power();
 })
 $("#__function-square-root").on("click", () => {
-    type("√(");
+    type("<sqrt>√(</sqrt>");
     // square_root();
 })
 $("#__function-one-divided-by").on("click", () => {
-    run("1÷(" + $("#box").html() + ")");
+    type("1÷(");
+    // run("1÷(" + $("#box").html() + ")");
 })
 $("#__function-power").on("click", () => {
     type_symbol("<sup>" +  $("#power-num").val() + "</sup>");
@@ -80,6 +81,10 @@ $("#__function-power").on("click", () => {
 $("#__function-root").on("click", () => {
     type("<roota><i>" + $("#root-num").val() + "</i>√(</roota>");
     // root($("#box").html(), $("#root-num").val());
+})
+
+$("#__function-trigonometry-sine").on("click", () => {
+    type("<function><i>sin</i>(</function>");
 })
 
 $("#__equals").on("click", () => {

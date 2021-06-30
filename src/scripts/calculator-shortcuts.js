@@ -88,6 +88,10 @@ $(window).on("keydown", (e) => {
             case "E":
                 type("e");
                 break;
+            case "i":
+            case "I":
+                type("∞");
+                break;
             
             case "Enter":
                 run();

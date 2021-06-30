@@ -8,19 +8,14 @@
     overflow: scroll;
 }
 
-#history p {
+#history p, #history sup, #history sqrt, #history roota, #history roota i, #history function, #history function i {
     user-select: text;
 }
 
 #history sup {
     color: lime;
-    user-select: text;
 }
 
-#history roota {
-    user-select: text;
-}
-
-#history roota i {
-    user-select: text;
+#history function i {
+    color: #f28500;
 }

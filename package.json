@@ -1,7 +1,7 @@
 {
   "name": "yoomath",
   "productName": "Yoo-Math",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple math application with measurement converters and a beautiful design.",
   "main": "main.js",
   "scripts": {
