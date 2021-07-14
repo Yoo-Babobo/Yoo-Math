@@ -9,7 +9,8 @@ $(() => {
         if (err) return;
 
         var lines = data.toString().split("\n");
-        lines.forEach((value) => {
+        lines.pop();
+        lines.reverse().forEach((value) => {
             if (value != null || value != "") {
                 $("#history").append("<p>" + value + "</p>");
             }

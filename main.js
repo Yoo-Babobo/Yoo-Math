@@ -9,6 +9,9 @@ var menu;
 var pinned = false;
 let tray = null;
 
+var calculated = true;
+var selected = false;
+
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
@@ -98,17 +101,9 @@ autoUpdater.on("update-downloaded", () => {
   mainWindow.webContents.send("update_downloaded");
 });
 
-ipcMain.on("home-page", () => {
-  home_page();
-});
-
-ipcMain.on("about-page", () => {
-  about_page();
-});
-
-ipcMain.on("history-page", () => {
-  history_page();
-});
+ipcMain.on("home-page", home_page);
+ipcMain.on("about-page", about_page);
+ipcMain.on("history-page", history_page);
 
 ipcMain.on("open-menu", (event) => {
   menu.popup(BrowserWindow.fromWebContents(event.sender));

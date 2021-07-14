@@ -92,6 +92,10 @@ $(window).on("keydown", (e) => {
             case "I":
                 type("∞");
                 break;
+            case "g":
+            case "G":
+                type("φ");
+                break;
             
             case "Enter":
                 run();

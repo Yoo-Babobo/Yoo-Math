@@ -1,9 +1,7 @@
 const { ipcRenderer, shell } = require("electron");
 const fs = require("fs");
 
-$(() => {
-    $("input, button, a").prop("tabIndex", -1);
-});
+$(() => { $("input, button, a").prop("tabIndex", -1); });
 
 function notification(title, message, button2_enabled = false, button2_text = null, button2 = () => {}) {
     $("#notification-title").text(title);

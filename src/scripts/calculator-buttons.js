@@ -64,27 +64,37 @@ $("#__constant-e").on("click", () => {
 
 $("#__function-square").on("click", () => {
     type_symbol("<sup>2</sup>");
-    // power();
 })
 $("#__function-square-root").on("click", () => {
     type("<sqrt>√(</sqrt>");
-    // square_root();
 })
 $("#__function-one-divided-by").on("click", () => {
     type("1÷(");
-    // run("1÷(" + $("#box").html() + ")");
 })
 $("#__function-power").on("click", () => {
     type_symbol("<sup>" +  $("#power-num").val() + "</sup>");
-    // power($("#box").html(), $("#power-num").val());
 })
 $("#__function-root").on("click", () => {
-    type("<roota><i>" + $("#root-num").val() + "</i>√(</roota>");
-    // root($("#box").html(), $("#root-num").val());
+    type("<roota><i>" + $("#root-num").val() + "</i> √(</roota>");
 })
 
 $("#__function-trigonometry-sine").on("click", () => {
-    type("<function><i>sin</i>(</function>");
+    type("<function><i>sin</i> (</function>");
+})
+$("#__function-trigonometry-cosine").on("click", () => {
+    type("<function><i>cos</i> (</function>");
+})
+$("#__function-trigonometry-tangent").on("click", () => {
+    type("<function><i>tan</i> (</function>");
+})
+$("#__function-trigonometry-cosecant").on("click", () => {
+    type("<function><i>csc</i> (</function>");
+})
+$("#__function-trigonometry-secant").on("click", () => {
+    type("<function><i>sec</i> (</function>");
+})
+$("#__function-trigonometry-cotangent").on("click", () => {
+    type("<function><i>cot</i> (</function>");
 })
 
 $("#__equals").on("click", () => {

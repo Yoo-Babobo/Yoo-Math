@@ -1,3 +1,5 @@
+const { YooMath } = require("@yoo-babobo/yoo-math.js");
+
 var calculated = true;
 var selected = false;
 
@@ -9,48 +11,14 @@ setInterval(() => {
     if ($("#box").html() == "0") {
         calculated = true;
     }
+
+
 }, 20);
 
 $(() => {
     $(document).on("focus", unselect);
     $(document).on("click", unselect);
     $(document).on("dblclick", unselect);
-
-    /*$('<div class="cal-btn-function-num-nav"><button class="cal-btn-function-num-button cal-btn-function-num-up">&#xf106;</button><button class="cal-btn-function-num-button cal-btn-function-num-down">&#xf107</button></div>').insertAfter(".cal-btn-function-num input");
-    $(".cal-btn-function-num").each(() => {
-        var spinner = $(this),
-            input = spinner.find('input[type="number"]'),
-            btnUp = spinner.find(".cal-btn-function-num-up"),
-            btnDown = spinner.find(".cal-btn-function-num-down"),
-            min = input.attr("min"),
-            max = input.attr("max");
-
-        btnUp.on("click", () => {
-            var oldValue = parseFloat(input.val());
-
-            if (oldValue >= max) {
-                var newVal = oldValue;
-            } else {
-                var newVal = oldValue + 1;
-            }
-
-            spinner.find("input").val(newVal);
-            spinner.find("input").trigger("change");
-        });
-
-        btnDown.on("click", () => {
-            var oldValue = parseFloat(input.val());
-
-            if (oldValue <= min) {
-                var newVal = oldValue;
-            } else {
-                var newVal = oldValue - 1;
-            }
-
-            spinner.find("input").val(newVal);
-            spinner.find("input").trigger("change");
-        });
-    });*/
 
     $("button").on("focus", () => {
         $("button").trigger("blur");
@@ -74,14 +42,14 @@ $(() => {
 function type(a) {
     clear_if_calculated();
     
-    if (a == "π" || a == "e" || a == "∞" || a == "(" || match_functions(a)) {
-        if ($("#box").html().toString().slice(-1).match(/\d|π|e|∞|\)/g)) {
+    if (a == "π" || a == "e" || a == "∞" || a == "φ" || a == "(" || match_functions(a)) {
+        if ($("#box").html().toString().slice(-1).match(/\d|π|e|∞|φ|\)/g)) {
             $("#box").append("×" + a);
         } else {
             $("#box").append(a);
         }
     } else {
-        if (a != ")" && $("#box").html().toString().slice(-1).match(/π|e|∞|\)/g)) {
+        if (a != ")" && $("#box").html().toString().slice(-1).match(/π|e|∞|φ|\)/g)) {
             $("#box").append("×" + a);
         } else {
             $("#box").append(a);
@@ -105,12 +73,34 @@ function run(raw_math = $("#box").html()) {
         .replace(/%/g, "/100")
         .replace(/π/g, Math.PI)
         .replace(/e/g, Math.E)
-        .replace(/\<function\>\<i\>sin\<\/i\>\(\<\/function\>/g, "Math.sin(")
-        .replace(/\<function\>\<i\>cos\<\/i\>\(\<\/function\>/g, "Math.cos(")
-        .replace(/\<function\>\<i\>tan\<\/i\>\(\<\/function\>/g, "Math.tan(")
+        .replace(/φ/g, 1.618033988749895)
+        .replace(/\<function\>\<i\>sin\<\/i\> \(\<\/function\>/g, "Math.sin(")
+        .replace(/\<function\>\<i\>cos\<\/i\> \(\<\/function\>/g, "Math.cos(")
+        .replace(/\<function\>\<i\>tan\<\/i\> \(\<\/function\>/g, "Math.tan(")
+        .replace(/\<function\>\<i\>sinh\<\/i\> \(\<\/function\>/g, "Math.sinh(")
+        .replace(/\<function\>\<i\>cosh\<\/i\> \(\<\/function\>/g, "Math.cosh(")
+        .replace(/\<function\>\<i\>tanh\<\/i\> \(\<\/function\>/g, "Math.tanh(")
+        .replace(/\<function\>\<i\>asin\<\/i\> \(\<\/function\>/g, "Math.asin(")
+        .replace(/\<function\>\<i\>acos\<\/i\> \(\<\/function\>/g, "Math.acos(")
+        .replace(/\<function\>\<i\>atan\<\/i\> \(\<\/function\>/g, "Math.atan(")
+        .replace(/\<function\>\<i\>asinh\<\/i\> \(\<\/function\>/g, "Math.asinh(")
+        .replace(/\<function\>\<i\>acosh\<\/i\> \(\<\/function\>/g, "Math.acosh(")
+        .replace(/\<function\>\<i\>atanh\<\/i\> \(\<\/function\>/g, "Math.atanh(")
+        .replace(/\<function\>\<i\>csc\<\/i\> \(\<\/function\>/g, "YooMath.trig.csc(")
+        .replace(/\<function\>\<i\>sec\<\/i\> \(\<\/function\>/g, "YooMath.trig.sec(")
+        .replace(/\<function\>\<i\>cot\<\/i\> \(\<\/function\>/g, "YooMath.trig.cot(")
+        .replace(/\<function\>\<i\>csch\<\/i\> \(\<\/function\>/g, "YooMath.trig.csch(")
+        .replace(/\<function\>\<i\>sech\<\/i\> \(\<\/function\>/g, "YooMath.trig.sech(")
+        .replace(/\<function\>\<i\>coth\<\/i\> \(\<\/function\>/g, "YooMath.trig.coth(")
+        .replace(/\<function\>\<i\>acsc\<\/i\> \(\<\/function\>/g, "YooMath.trig.acsc(")
+        .replace(/\<function\>\<i\>asec\<\/i\> \(\<\/function\>/g, "YooMath.trig.asec(")
+        .replace(/\<function\>\<i\>acot\<\/i\> \(\<\/function\>/g, "YooMath.trig.acot(")
+        .replace(/\<function\>\<i\>acsch\<\/i\> \(\<\/function\>/g, "YooMath.trig.acsch(")
+        .replace(/\<function\>\<i\>asech\<\/i\> \(\<\/function\>/g, "YooMath.trig.asech(")
+        .replace(/\<function\>\<i\>acoth\<\/i\> \(\<\/function\>/g, "YooMath.trig.acoth(")
         .replace(/\<sup\>(.*)\<\/sup\>/g, "** $1")
         .replace(/\<sqrt\>√\(\<\/sqrt\>/g, "Math.sqrt(")
-        .replace(/\<roota\>\<i\>(.*)\<\/i\>√\(\<\/roota\>(.*)\)/g, "Math.pow($2, 1 / $1)");
+        .replace(/\<roota\>\<i\>(.*)\<\/i\> √\(\<\/roota\>(.*)\)/g, "Math.pow($2, 1 / $1)");
     var output = eval(math).toString().replace(/Infinity/g, "∞");
 
     $("#box").html(output);
@@ -118,51 +108,6 @@ function run(raw_math = $("#box").html()) {
     add_to_history(raw_math + "=" + output);
     calculated = true;
 }
-
-/*function power(math = $("#box").html(), power = 2) {
-    math = math
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/%/g, "/100")
-        .replace(/π/g, Math.PI)
-        .replace(/e/g, Math.E);
-    var output = Math.pow(eval(math), power).toString().replace(/Infinity/g, "∞");
-
-    $("#box").html(output);
-    set_last_calculation("(" + math + ")<sup>" + power + "</sup>=" + output);
-    add_to_history("(" + math + ")<sup>" + power + "</sup>=" + output);
-    calculated = true;
-}
-
-function square_root(math = $("#box").html()) {
-    math = math
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/%/g, "/100")
-        .replace(/π/g, Math.PI)
-        .replace(/e/g, Math.E);
-    var output = Math.sqrt(eval(math)).toString().replace(/Infinity/g, "∞");
-
-    $("#box").html(output);
-    set_last_calculation("√(" + math + ")=" + output);
-    add_to_history("√(" + math + ")=" + output);
-    calculated = true;
-}
-
-function root(math = $("#box").html(), root = 3) {
-    math = math
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/%/g, "/100")
-        .replace(/π/g, Math.PI)
-        .replace(/e/g, Math.E);
-    var output = Math.pow(eval(math), 1 / root).toString().replace(/Infinity/g, "∞");
-
-    $("#box").html(output);
-    set_last_calculation(root + "√(" + math + ")=" + output);
-    add_to_history(root + "√(" + math + ")=" + output);
-    calculated = true;
-}*/
 
 function clear(del = false) {
     if (selected) {
@@ -233,7 +178,7 @@ function set_last_calculation(math) {
 }
 
 function match_functions(data) {
-    if (data.toString().match(/\<function\>\<i\>(.*)\<\/i\>\(\<\/function\>|\<sqrt\>√\(\<\/sqrt\>|\<roota\>\<i\>(.*)\<\/i\>√\(\<\/roota\>/g)) {
+    if (data.toString().match(/\<function\>\<i\>(.*)\<\/i\> \(\<\/function\>|\<sqrt\>√\(\<\/sqrt\>|\<roota\>\<i\>(.*)\<\/i\> √\(\<\/roota\>/g)) {
         return true;
     } else {
         return false;
