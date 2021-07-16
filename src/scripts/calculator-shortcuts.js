@@ -2,12 +2,8 @@ $(window).on("keydown", (e) => {
     if (e.ctrlKey && (e.key == "a" || e.key == "A")) {
         if (!$("input").is(":focus")) {
             e.preventDefault();
-
-            if (selected) {
-                unselect();
-            } else {
-                select();
-            }
+            if (selected) selected = false;
+            else selected = true;
         }
     } else if (e.ctrlKey && (e.key == "c" || e.key == "C")) {
         if (selected) {
@@ -68,6 +64,9 @@ $(window).on("keydown", (e) => {
             case "%":
                 type_symbol("%");
                 break;
+            case "!":
+                type_symbol("!");
+                break;
             
             case "(":
                 type("(");
@@ -80,13 +79,11 @@ $(window).on("keydown", (e) => {
                 break;
             case "p":
             case "P":
-                if (!e.ctrlKey) {
-                    type("π");
-                }
+                if (!e.ctrlKey) type("π");
                 break;
             case "e":
             case "E":
-                type("e");
+                type("ｅ");
                 break;
             case "i":
             case "I":
@@ -104,7 +101,7 @@ $(window).on("keydown", (e) => {
                 clear();
                 break;
             case "Delete":
-                clear(true)
+                clear(true);
                 break;
         }
     }

@@ -1,3 +1,5 @@
+table#main { padding-left: 12.5%; }
+
 #box {
     background-color: #d3d3d3;
     color: #343434;
@@ -10,24 +12,14 @@
     height: 25px;
     overflow-x: auto;
     overflow-y: hidden;
+    white-space: nowrap;
     user-select: text;
 }
 
-#box sup, #box sqrt, #box roota, #box roota i, #box function, #box function i {
-    user-select: text;
-}
-
-#box sup {
-    color: green;
-}
-
-#box function i {
-    color: #f28500;
-}
-
-#box.selected {
-    background-color: #a3b2e0;
-}
+#box sup, #box sqrt, #box root, #box root i, #box function, #box function i { user-select: text; }
+#box sup { color: green; }
+#box function i { color: #f28500; }
+#box.selected { background-color: #a3b2e0; }
 
 #last-calculation {
     background-color: #808080;
@@ -44,17 +36,9 @@
     user-select: text;
 }
 
-#last-calculation sup, #last-calculation sqrt, #last-calculation roota, #last-calculation roota i, #last-calculation function, #last-calculation function i {
-    user-select: text;
-}
-
-#last-calculation sup {
-    color: lime;
-}
-
-#last-calculation function i {
-    color: #ffa434;
-}
+#last-calculation sup, #last-calculation sqrt, #last-calculation root, #last-calculation root i, #last-calculation function, #last-calculation function i { user-select: text; }
+#last-calculation sup { color: lime; }
+#last-calculation function i { color: #ffa434; }
 
 #extra-functions-fake {
     position: fixed;
@@ -75,9 +59,7 @@
     transform: translateY(150px);
 }
 
-#extra-functions-fake:hover p {
-    transform: translateY(150px) translateX(5px);
-}
+#extra-functions-fake:hover p { transform: translateY(150px) translateX(5px); }
 
 #extra-functions {
     position: fixed;
@@ -94,6 +76,32 @@
     overflow: hidden;
     white-space: nowrap;
     transition: all .5s ease-in-out;
+}
+
+#trig-indicator-alt {
+    background-color: #111111;
+    position: fixed;
+    font-size: 10px;
+    bottom: 0;
+    left: 29.5%;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10vh;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    z-index: 1;
+}
+
+.trig-indicator {
+    background-color: #111111;
+    position: fixed;
+    font-size: 10px;
+    bottom: 0;
+    left: 20%;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10vh;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    z-index: 1;
 }
 
 .cal-btn {
@@ -173,9 +181,47 @@
     transition: all .2s ease-in-out;
 }
 
-.cal-btn-function-trigonometry {
+.cal-btn-function-toggle {
+    background-color: #98002e;
+    color: #d3d3d3;
+    font-weight: bold;
+    width: 80px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-function-toggle.active {
+    background-color: #72c996;
+    color: #343434;
+    font-weight: bold;
+    width: 80px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    transform: scale(.95) rotate(37deg) !important;
+}
+
+.cal-btn-function-toggle.active:active { transform: scale(1.1) rotate(37deg) !important; }
+
+.cal-btn-function-log {
     background-color: #f7347a;
     color: #d3d3d3;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .2s ease-in-out;
+}
+
+.cal-btn-function-trigonometry {
+    background-color: rgb(224, 221, 20);
+    color: #343434;
     font-weight: bold;
     width: 50px;
     height: 50px;
@@ -196,10 +242,6 @@
     border-radius: 5px 0 0 5px;
 }
 
-.cal-btn-function-special:hover {
-    transform: scale(1) !important;
-}
-
 .cal-btn-function-num {
     background-color: #79519e;
     color: #d3d3d3;
@@ -210,13 +252,9 @@
     border-radius: 0 5px 5px 0;
 }
 
-.cal-btn-function-num:hover {
-    transform: scale(1) !important;
-}
+.cal-btn-function-num:hover, .cal-btn-function-special:hover { transform: scale(1) !important; }
 
-/*.cal-btn-function-num {
-    position: relative;
-}
+/*.cal-btn-function-num { position: relative; }
 
 .cal-btn-function-num input {
     background-color: #79519e;
@@ -294,3 +332,5 @@
     box-shadow: none;
     transform: scale(.95);
 }
+
+[class*="cal-btn"]:active { transform: scale(1.1); }

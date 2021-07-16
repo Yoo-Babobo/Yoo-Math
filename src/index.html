@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="assets/style.css" />
-    <link rel="stylesheet" href="assets/calculator.css" />
     <link rel="preload" href="assets/fonts/Roboto.woff2" as="font" type="font/woff2" crossorigin />
     <script>
       let $ = require("jquery");
@@ -21,106 +20,27 @@
         </div>
       </div>
       <div id="menu-bar">
-        <button class="menubar-btn active" id="home-btn" aria-label="Yoo-Math homepage" data-microtip-position="right" role="tooltip"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn active" id="home-btn" aria-label="Yoo-Math Home" data-microtip-position="right" role="tooltip"><img src="assets/img/home-small.png" alt="Home" /></button>
+        <button class="menubar-btn" id="calculator-btn" aria-label="Yoo-Math Calculator" data-microtip-position="right" role="tooltip"><img src="assets/img/calculator-small.png" alt="Calculator" /></button>
         <button class="menubar-btn" id="about-btn" aria-label="About Yoo-Math" data-microtip-position="right" role="tooltip"><img src="assets/img/info-small.png" alt="About" /></button>
         <button class="menubar-btn" id="history-btn" aria-label="Yoo-Math History" data-microtip-position="right" role="tooltip"><img src="assets/img/history-small.png" alt="History" /></button>
         <button class="menubar-btn" id="pin-btn" aria-label="Pin Yoo-Math to screen" data-microtip-position="right" role="tooltip"><img src="assets/img/pin-small.png" alt="Pin" /></button>
       </div>
       <div class="root">
-        <div id="extra-functions-fake">
-          <p>&#10140;</p>
-        </div>
-        <div id="extra-functions">
-          <p>Extra Functions</p>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="cal-btn-function-wrapper" aria-label="Power" data-microtip-position="top" role="tooltip">
-                    <button class="cal-btn-function-special" id="__function-power"><i>x</i><sup><i>y</i></sup></button>
-                    <input type="number" class="cal-btn-function-num" id="power-num" min="-999999" max="999999" value="3" />
-                  </div>
-                </td>
-                <td>
-                  <div class="cal-btn-function-wrapper" aria-label="Root" data-microtip-position="top" role="tooltip">
-                    <button class="cal-btn-function-special" id="__function-root"><i>y</i> √<i>x</i></button>
-                    <input type="number" class="cal-btn-function-num" id="root-num" min="-999999" max="999999" value="3" />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <tbody>
-              <tr>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-sine" aria-label="Sine" data-microtip-position="top" role="tooltip"><i>sin</i></button></td>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-cosine" aria-label="Cosine" data-microtip-position="top" role="tooltip"><i>cos</i></button></td>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-tangent" aria-label="Tangent" data-microtip-position="top" role="tooltip"><i>tan</i></button></td>
-              </tr>
-              <tr>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-cosecant" aria-label="Cosecant" data-microtip-position="top" role="tooltip"><i>csc</i></button></td>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-secant" aria-label="Secant" data-microtip-position="top" role="tooltip"><i>sec</i></button></td>
-                <td><button class="cal-btn-function-trigonometry" id="__function-trigonometry-cotangent" aria-label="Cotangent" data-microtip-position="top" role="tooltip"><i>cot</i></button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div id="last-calculation"></div>
-        <div id="box"></div>
-        <br>
+        <h1>Yoo-Math</h1>
         <table>
           <tbody>
             <tr>
-              <td><button class="cal-btn-function" id="__function-square" aria-label="Square" data-microtip-position="top" role="tooltip"><i>x</i><sup>2</sup></button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-left-parenthesis" aria-label="Left parenthesis" data-microtip-position="top" role="tooltip">(</button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-right-parenthesis" aria-label="Right parenthesis" data-microtip-position="top" role="tooltip">)</button></td>
-              <td><button class="cal-btn-clear" id="__clear" aria-label="Clear" data-microtip-position="top" role="tooltip">C</button></td>
-              <td><button class="cal-btn-equals" id="__equals" aria-label="Equals (Calculate)" data-microtip-position="top" role="tooltip">=</button></td>
-            </tr>
-            <tr>
-              <td><button class="cal-btn-function" id="__function-square-root" aria-label="Square root" data-microtip-position="top-right" role="tooltip">√<i>x</i></button></td>
-              <td><button class="cal-btn" id="__number-7" aria-label="Seven" data-microtip-position="top" role="tooltip">7</button></td>
-              <td><button class="cal-btn" id="__number-8" aria-label="Eight" data-microtip-position="top" role="tooltip">8</button></td>
-              <td><button class="cal-btn" id="__number-9" aria-label="Nine" data-microtip-position="top" role="tooltip">9</button></td>
-              <td><button class="cal-btn-operation" id="__operation-add" aria-label="Add" data-microtip-position="top" role="tooltip">+</button></td>
-            </tr>
-            <tr>
-              <td><button class="cal-btn-function" id="__function-one-divided-by" aria-label="One divided by" data-microtip-position="top-right" role="tooltip">1/<i>x</i></button></td>
-              <td><button class="cal-btn" id="__number-4" aria-label="Four" data-microtip-position="top" role="tooltip">4</button></td>
-              <td><button class="cal-btn" id="__number-5" aria-label="Five" data-microtip-position="top" role="tooltip">5</button></td>
-              <td><button class="cal-btn" id="__number-6" aria-label="Six" data-microtip-position="top" role="tooltip">6</button></td>
-              <td><button class="cal-btn-operation" id="__operation-subtract" aria-label="Subtract" data-microtip-position="top" role="tooltip">-</button></td>
-            </tr>
-            <tr>
-              <td><button class="cal-btn-constant" id="__constant-pi" aria-label="π (PI)" data-microtip-position="top" role="tooltip">π</button></td>
-              <td><button class="cal-btn" id="__number-1" aria-label="One" data-microtip-position="top" role="tooltip">1</button></td>
-              <td><button class="cal-btn" id="__number-2" aria-label="Two" data-microtip-position="top" role="tooltip">2</button></td>
-              <td><button class="cal-btn" id="__number-3" aria-label="Three" data-microtip-position="top" role="tooltip">3</button></td>
-              <td><button class="cal-btn-operation" id="__operation-multiply" aria-label="Multiply" data-microtip-position="top" role="tooltip">×</button></td>
-            </tr>
-            <tr>
-              <td><button class="cal-btn-constant" id="__constant-e" aria-label="e" data-microtip-position="top" role="tooltip">e</button></td>
-              <td><button class="cal-btn-symbol" id="__symbol-period" aria-label="Period" data-microtip-position="top" role="tooltip">.</button></td>
-              <td><button class="cal-btn" id="__number-0" aria-label="Zero" data-microtip-position="top" role="tooltip">0</button></td>
-              <td><button class="cal-btn-operation" id="__operation-percent" aria-label="Percent" data-microtip-position="top" role="tooltip">%</button></td>
-              <td><button class="cal-btn-operation" id="__operation-divide" aria-label="Divide" data-microtip-position="top" role="tooltip">÷</button></td>
+              <td><button class="big-btn" id="cal-btn">Calculator</button></td>
             </tr>
           </tbody>
         </table>
-        <div id="notification">
-          <p id="notification-title"></p>
-          <p id="notification-message"></p>
-          <button id="notification-button1">Dismiss</button>
-          <button id="notification-button2"></button>
-        </div>
       </div>
       <p id="version">—</p>
     </div>
     <link rel="stylesheet" href="../node_modules/microtip/microtip.min.css" />
     <script src="scripts/functions.js"></script>
     <script src="scripts/menu.js"></script>
-    <script src="scripts/calculator.js"></script>
-    <script src="scripts/calculator-buttons.js"></script>
-    <script src="scripts/calculator-shortcuts.js"></script>
+    <script src="scripts/home.js"></script>
   </body>
 </html>

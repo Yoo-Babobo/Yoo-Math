@@ -1,0 +1,1 @@
+$("#cal-btn").on("click", () => ipcRenderer.send("calculator-page"));

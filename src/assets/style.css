@@ -12,81 +12,45 @@
     user-select: none;
 }
 
-:root {
-    --microtip-transition-easing: ease-in-out;
-}
+:root { --microtip-transition-easing: ease-in-out; }
 
-::-webkit-scrollbar {
-    width: 0;
-}
-
-::-webkit-scrollbar-track {
-    background: #2f3129;
-}
+::-webkit-scrollbar { width: 0; }
+::-webkit-scrollbar-track { background: #2f3129; }
 
 ::-webkit-scrollbar-thumb {
     background: #ffde59;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar:horizontal {
-    height: 5px;
-}
-
-::-webkit-scrollbar-track:horizontal {
-    background: #2f3129;
-}
+::-webkit-scrollbar:horizontal { height: 5px; }
+::-webkit-scrollbar-track:horizontal { background: #2f3129; }
 
 ::-webkit-scrollbar-thumb:horizontal {
     background: #ffde59;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-corner {
-    background: #2f3129;
-}
+::-webkit-scrollbar-corner { background: #2f3129; }
 
 ::selection {
     background-color: #a3b2e0;
     color: #343434;
 }
 
-body {
-    color: #d3d3d3;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-    padding: 10px;
-}
-
-table {
-    margin: auto;
-}
-
-tbody {
-    padding: 20px;
-}
-
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
-button, a {
-    cursor: pointer;
-}
+body { color: #d3d3d3; }
+h1, h2, h3, h4, h5, h6, p { padding: 10px; }
+table { margin: auto; }
+tbody { padding: 20px; }
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+button, a { cursor: pointer; }
 
 a {
     color: royalblue;
     text-decoration: none;
 }
 
-ul {
-    margin-left: 50px;
-}
-
-li {
-    text-align: left;
-}
+ul { margin-left: 50px; }
+li { text-align: left; }
 
 #top-bar {
     position: fixed;
@@ -116,13 +80,8 @@ li {
     letter-spacing: 3px;
 }
 
-#close-btn {
-    border-radius: 0 10px 0 0;
-}
-
-#close-btn:hover {
-    background-color: firebrick;
-}
+#close-btn { border-radius: 0 10px 0 0; }
+#close-btn:hover { background-color: firebrick; }
 
 #menu-bar {
     position: fixed;
@@ -136,9 +95,7 @@ li {
     -webkit-app-region: drag;
 }
 
-#home-btn {
-    border-radius: 10px 0 5px 0;
-}
+#home-btn { border-radius: 10px 0 5px 0; }
 
 #pin-btn {
     position: fixed;
@@ -151,7 +108,6 @@ li {
 #version {
     background-color: #111111;
     position: fixed;
-    text-align: right;
     font-size: 10px;
     bottom: 0;
     right: 0;
@@ -184,9 +140,7 @@ li {
     font-weight: bold;
 }
 
-#notification p {
-    padding: 10px;
-}
+#notification p { padding: 10px; }
 
 #notification-button1 {
     background-color: #6934d3;
@@ -198,9 +152,7 @@ li {
     transition: all .3s ease-in-out;
 }
 
-#notification-button1:hover {
-    transform: translateY(-2px);
-}
+#notification-button1:hover { transform: translateY(-2px); }
 
 #notification-button2 {
     background-color: #6934d3;
@@ -212,9 +164,7 @@ li {
     transition: all .3s ease-in-out;
 }
 
-#notification-button2:hover {
-    transform: translateY(-2px);
-}
+#notification-button2:hover { transform: translateY(-2px); }
 
 #scroll-container {
     position: fixed;
@@ -241,9 +191,7 @@ li {
     -webkit-app-region: no-drag;
 }
 
-.topbar-btn:hover {
-    background-color: #343434;
-}
+.topbar-btn:hover { background-color: #343434; }
 
 .menubar-btn {
     background-color: #272727;
@@ -255,13 +203,8 @@ li {
     -webkit-app-region: no-drag;
 }
 
-.menubar-btn:hover {
-    background-color: #343434;
-}
-
-.menubar-btn.active {
-    background-color: rgb(55, 161, 91);
-}
+.menubar-btn:hover { background-color: #343434; }
+.menubar-btn.active { background-color: rgb(55, 161, 91); }
 
 .main {
     position: fixed;
@@ -295,6 +238,22 @@ li {
     transition: all .3s ease-in-out;
 }
 
-.btn:hover {
-    transform: translateY(2px);
+.btn:hover { transform: translateY(2px); }
+.hidden { display: none; }
+
+.big-btn {
+    display: inline-block;
+    background-color: #ffde59;
+    color: #343434;
+    font-weight: bold;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    transition: all .5s ease-in-out;
+}
+
+.big-btn:hover {
+    box-shadow: none;
+    transform: scale(.95) rotate(-32deg);
 }

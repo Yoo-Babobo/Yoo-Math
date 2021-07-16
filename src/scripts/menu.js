@@ -3,19 +3,15 @@ var n = false;
 $(() => {
   setInterval(() => {
     ipcRenderer.send("pinned");
-
-    fs.access("history.yoo", fs.F_OK, (err) => {
+    fs.access("history.yoo", fs.F_OK, err => {
       if (err) {
-        fs.writeFile("history.yoo", "", (err) => {
-          if (err) return;
-        });
-
+        fs.writeFile("history.yoo", "", (err) => { if (err) return; });
         return;
       }
     });
   }, 20);
 
-  $(document).on("keydown", (e) => {
+  $(document).on("keydown", e => {
     if (e.ctrlKey) {
       switch (e.key) {
         case "p":
@@ -28,10 +24,7 @@ $(() => {
         hide_notification();
         n = false;
       } else {
-        notification("Test", "This is a test notification...", true, "Click me!", () => {
-          alert("You click a notification button!");
-        });
-  
+        notification("Test", "This is a test notification...", true, "Click me!", () => alert("You click a notification button!"));
         n = true;
       }
     }
@@ -44,27 +37,11 @@ $(() => {
     $("#scroll-bar").css("width", scrolled + "%");
   });
 
-  $("#home-btn").on("click", () => {
-    ipcRenderer.send("home-page");
-  });
-
-  $("#minimize-btn").on("click", () => {
-    ipcRenderer.send("hide");
-  });
-
-  $("#close-btn").on("click", () => {
-    ipcRenderer.send("close");
-  });
-
-  $("#pin-btn").on("click", () => {
-    ipcRenderer.send("pin-toggle");
-  });
-
-  $("#about-btn").on("click", () => {
-    ipcRenderer.send("about-page");
-  });
-
-  $("#history-btn").on("click", () => {
-    ipcRenderer.send("history-page");
-  });
+  $("#minimize-btn").on("click", () => ipcRenderer.send("hide"));
+  $("#close-btn").on("click", () => ipcRenderer.send("close"));
+  $("#pin-btn").on("click", () => ipcRenderer.send("pin-toggle"));
+  $("#home-btn").on("click", () => ipcRenderer.send("home-page"));
+  $("#calculator-btn").on("click", () => ipcRenderer.send("calculator-page"));
+  $("#about-btn").on("click", () => ipcRenderer.send("about-page"));
+  $("#history-btn").on("click", () => ipcRenderer.send("history-page"));
 });

@@ -1,7 +1,7 @@
 {
   "name": "yoomath",
   "productName": "Yoo-Math",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "The future of math.",
   "main": "main.js",
   "scripts": {

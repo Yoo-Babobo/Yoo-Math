@@ -4,10 +4,7 @@ class Cookie {
         this.value = value;
         this.days = days;
         this.path = path;
-
-        if (autoInit) {
-            this.init()
-        }
+        if (autoInit) this.init();
     }
 
     init() {
@@ -27,15 +24,7 @@ class Cookie {
         this.init();
     }
 
-    get name() {
-        return this.name;
-    }
-
-    get value() {
-        return this.value;
-    }
-
-    get days() {
-        return this.days;
-    }
+    get name() { return this.name; }
+    get value() { return this.value; }
+    get days() { return this.days; }
 }

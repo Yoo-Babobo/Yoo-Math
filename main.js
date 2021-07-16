@@ -7,14 +7,14 @@ const size = 550;
 var mainWindow;
 var menu;
 var pinned = false;
-let tray = null;
+// let tray = null;
 
 var calculated = true;
-var selected = false;
+var calculation = "";
+var last_calculation = "";
+var trig_type = 0;
 
-if (require("electron-squirrel-startup")) {
-  app.quit();
-}
+if (require("electron-squirrel-startup")) app.quit();
 
 const createWindow = () => {
   registerProtocolHandler();
@@ -70,44 +70,24 @@ const createWindow = () => {
   tray.setToolTip("Yoo-Math");
   tray.setContextMenu(menu);
 
-  tray.on("click", () => {
-    mainWindow.show();
-  });*/
+  tray.on("click", () => mainWindow.show());*/
 
-  mainWindow.once("ready-to-show", () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
+  mainWindow.once("ready-to-show", () => autoUpdater.checkForUpdatesAndNotify());
 };
 
 app.on("ready", createWindow);
+app.on("window-all-closed", () => { if (process.platform !== "darwin") app.quit(); });
+app.on("activate", () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});
-
-autoUpdater.on("update-available", () => {
-  mainWindow.webContents.send("update_available");
-});
-
-autoUpdater.on("update-downloaded", () => {
-  mainWindow.webContents.send("update_downloaded");
-});
+autoUpdater.on("update-available", () => mainWindow.webContents.send("update_available"));
+autoUpdater.on("update-downloaded", () => mainWindow.webContents.send("update_downloaded"));
 
 ipcMain.on("home-page", home_page);
+ipcMain.on("calculator-page", calculator_page);
 ipcMain.on("about-page", about_page);
 ipcMain.on("history-page", history_page);
 
-ipcMain.on("open-menu", (event) => {
-  menu.popup(BrowserWindow.fromWebContents(event.sender));
-});
+ipcMain.on("open-menu", event => menu.popup(BrowserWindow.fromWebContents(event.sender)));
 
 ipcMain.on("pin-toggle", () => {
   if (mainWindow.isAlwaysOnTop() && pinned) {
@@ -118,35 +98,28 @@ ipcMain.on("pin-toggle", () => {
     pinned = true;
   }
 });
+ipcMain.on("pinned", event => event.sender.send("pinned", { pinned: pinned }));
 
-ipcMain.on("pinned", (event) => {
-  event.sender.send("pinned", { pinned: pinned });
-});
+ipcMain.on("set-calculated", () => calculated = true);
+ipcMain.on("not-calculated", () => calculated = false);
+ipcMain.on("calculated", event => event.sender.send("calculated", { bool: calculated }));
 
-ipcMain.on("restart", () => {
-  autoUpdater.quitAndInstall();
-});
+ipcMain.on("restart", () => autoUpdater.quitAndInstall());
+ipcMain.on("hide", () => mainWindow.minimize());
+ipcMain.on("close", () => app.quit());
 
-ipcMain.on("hide", () => {
-  mainWindow.minimize();
-});
+ipcMain.on("set-calculation", (event, data) => calculation = data.math);
+ipcMain.on("calculation", event => event.sender.send("calculation", { math: calculation }));
 
-ipcMain.on("close", () => {
-  app.quit();
-});
+ipcMain.on("set-last-calculation", (event, data) => last_calculation = data.math);
+ipcMain.on("last-calculation", event => event.sender.send("last-calculation", { math: last_calculation }));
 
-ipcMain.on("app-version", (event) => {
-  event.sender.send("app-version", { version: app.getVersion() });
-});
+ipcMain.on("set-trig-type", (event, data) => trig_type = data.type);
+ipcMain.on("trig-type", event => event.sender.send("trig-type", { type: trig_type }));
 
-function home_page() {
-  mainWindow.loadFile(path.join(__dirname, "src/index.html"));
-}
+ipcMain.on("app-version", event => event.sender.send("app-version", { version: app.getVersion() }));
 
-function about_page() {
-  mainWindow.loadFile(path.join(__dirname, "src/about.html"));
-}
-
-function history_page() {
-  mainWindow.loadFile(path.join(__dirname, "src/history.html"));
-}
+function home_page() { mainWindow.loadFile(path.join(__dirname, "src/index.html")); }
+function calculator_page() { mainWindow.loadFile(path.join(__dirname, "src/calculator.html")); }
+function about_page() { mainWindow.loadFile(path.join(__dirname, "src/about.html")); }
+function history_page() { mainWindow.loadFile(path.join(__dirname, "src/history.html")); }

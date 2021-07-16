@@ -5,17 +5,9 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
-    overflow: scroll;
+    word-break: break-all;
 }
 
-#history p, #history sup, #history sqrt, #history roota, #history roota i, #history function, #history function i {
-    user-select: text;
-}
-
-#history sup {
-    color: lime;
-}
-
-#history function i {
-    color: #f28500;
-}
+#history p, #history sup, #history sqrt, #history root, #history root i, #history function, #history function i { user-select: text; }
+#history sup { color: lime; }
+#history function i { color: #f28500; }
